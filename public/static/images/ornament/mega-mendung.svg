@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 800 600" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <!-- Master shape of the Mega Mendung cloud -->
+    <g id="cloud">
+      <!-- Outer -->
+      <path d="M 0,50 Q 30,20 50,30 Q 70,0 100,20 Q 130,10 140,40 Q 110,60 90,50 Q 70,80 50,60 Q 30,70 0,50 Z" stroke-width="2.5" />
+      <!-- Middle -->
+      <path d="M 10,50 Q 30,28 48,36 Q 70,10 95,28 Q 120,20 128,40 Q 105,54 90,46 Q 70,68 52,54 Q 30,62 10,50 Z" stroke-width="1.5" />
+      <!-- Inner -->
+      <path d="M 20,50 Q 30,36 46,42 Q 70,20 90,36 Q 110,30 116,40 Q 100,48 90,42 Q 70,56 54,48 Q 30,54 20,50 Z" stroke-width="0.75" />
+      <!-- Curls -->
+      <path d="M 50,30 C 55,25 60,25 65,30 C 65,35 60,40 55,40" stroke-width="1" />
+      <path d="M 100,20 C 105,15 110,15 115,20 C 115,25 110,30 105,30" stroke-width="1" />
+      <path d="M 90,50 C 85,55 80,55 75,50 C 75,45 80,40 85,40" stroke-width="1" />
+    </g>
+    
+    <!-- Seamless Pattern Tile -->
+    <pattern id="megaMendungPattern" x="0" y="0" width="200" height="120" patternUnits="userSpaceOnUse">
+      <g fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" opacity="1">
+        <!-- Center -->
+        <use href="#cloud" x="30" y="10" />
+        <use href="#cloud" x="230" y="10" />
+        <use href="#cloud" x="-170" y="10" />
+        <use href="#cloud" x="30" y="130" />
+        <use href="#cloud" x="230" y="130" />
+        <use href="#cloud" x="-170" y="130" />
+        <use href="#cloud" x="30" y="-110" />
+        <use href="#cloud" x="230" y="-110" />
+        <use href="#cloud" x="-170" y="-110" />
+        
+        <!-- Shifted by half width (100) and half height (60) -->
+        <use href="#cloud" x="130" y="70" />
+        <use href="#cloud" x="-70" y="70" />
+        <use href="#cloud" x="330" y="70" />
+        <use href="#cloud" x="130" y="-50" />
+        <use href="#cloud" x="-70" y="-50" />
+        <use href="#cloud" x="330" y="-50" />
+        <use href="#cloud" x="130" y="190" />
+        <use href="#cloud" x="-70" y="190" />
+        <use href="#cloud" x="330" y="190" />
+      </g>
+    </pattern>
+  </defs>
+  
+  <rect width="100%" height="100%" fill="url(#megaMendungPattern)" />
+</svg>

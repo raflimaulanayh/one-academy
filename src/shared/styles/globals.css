@@ -1,0 +1,109 @@
+@import 'tailwindcss';
+@plugin "@tailwindcss/typography";
+@import './typography.css';
+@import 'tw-animate-css';
+
+@layer base {
+  @import './custom/input.css';
+  @import './custom/scrollbar.css';
+}
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  --color-primary: #0f2854;
+  --color-secondary: #ff9d00;
+  --color-accent-blue: #4988c4;
+  --color-accent-light: #bde8f5;
+  --color-accent-cyan: #06b6d4;
+  --color-black: #101828;
+
+  --color-background: #ffffff;
+  --color-foreground: #101828;
+  --color-border: #e2e8f0;
+  --color-ring: #0f2854;
+
+  --color-canvas: #ffffff;
+  --color-canvas-muted: #f8fafc;
+  --color-ink: #101828;
+
+  --color-bg-light: #f8fafc;
+  --color-text-dark: #101828;
+  --color-text-muted: #64748b;
+
+  --color-navy-dark: #071731;
+  --color-navy-medium: #0f2854;
+  --color-navy-active: #1e3a8a;
+}
+
+.dark {
+  --color-primary: #ff9d00;
+  --color-secondary: #4988c4;
+  --color-accent-blue: #4988c4;
+  --color-accent-light: #071731;
+  --color-accent-cyan: #06b6d4;
+  --color-black: #ffffff;
+
+  --color-background: #071731;
+  --color-foreground: #f8fafc;
+  --color-border: #1e293b;
+  --color-ring: #ff9d00;
+
+  --color-canvas: #0b192e;
+  --color-canvas-muted: #071731;
+  --color-ink: #f8fafc;
+
+  --color-bg-light: #0b192e;
+  --color-text-dark: #f8fafc;
+  --color-text-muted: #94a3b8;
+
+  --color-navy-dark: #071731;
+  --color-navy-medium: #0b192e;
+  --color-navy-active: #0f2854;
+}
+
+@theme {
+  --color-primary: var(--color-primary);
+  --color-secondary: var(--color-secondary);
+  --color-accent-blue: var(--color-accent-blue);
+  --color-accent-light: var(--color-accent-light);
+  --color-accent-cyan: var(--color-accent-cyan);
+  --color-black: var(--color-black);
+
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+  --color-border: var(--color-border);
+  --color-ring: var(--color-ring);
+
+  --color-canvas: var(--color-canvas);
+  --color-canvas-muted: var(--color-canvas-muted);
+  --color-ink: var(--color-ink);
+
+  --color-bg-light: var(--color-bg-light);
+  --color-text-dark: var(--color-text-dark);
+  --color-text-muted: var(--color-text-muted);
+
+  --color-navy-dark: var(--color-navy-dark);
+  --color-navy-medium: var(--color-navy-medium);
+  --color-navy-active: var(--color-navy-active);
+}
+
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+
+  button,
+  a {
+    @apply cursor-pointer transition-all hover:scale-[0.99];
+  }
+
+  .bg-gradient-blue {
+    background: linear-gradient(229deg, #003057 5.29%, #004d80 46.35%, #006eb5 99.34%);
+  }
+}

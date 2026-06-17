@@ -1,0 +1,4 @@
+# Authorized Digital Sellers (ads.txt)
+# Platform One Academy tidak menggunakan jaringan periklanan.
+# File ini dibuat untuk memvalidasi kepemilikan domain dan mencegah penjualan iklan yang tidak sah.
+# Referensi: https://iabtechlab.com/ads-txt/

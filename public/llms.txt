@@ -1,0 +1,47 @@
+# One Academy — llms.txt
+# https://oneacademy.id
+
+## Platform
+Name: One Academy
+Type: Modular LMS SaaS (Learning Management System as a Service)
+University: SATU University — Member of BINUS Higher Education
+Founded: 2026
+Location: SATU University, Kota Bandung, Jawa Barat, Indonesia
+Scope: Multi-level education (Elementary/SD, Junior High/SMP, Senior High/SMA, Universities/Perguruan Tinggi)
+
+## Vision
+Menyediakan solusi LMS modern, modular, dan terintegrasi untuk mendigitalkan dan meningkatkan pengalaman belajar-mengajar di semua tingkat pendidikan.
+
+## Modules & Portal
+1. Portal Siswa & Mahasiswa — Melacak kehadiran kelas, mengakses materi LMS modular, mengerjakan tugas, dan memantau nilai.
+   URL: https://oneacademy.id/dashboard
+
+2. Modular LMS — Modul pembelajaran terstruktur sesuai tingkat pendidikan.
+   URL: https://oneacademy.id/lms
+
+## Platform Features
+- Landing Page: Informasi platform, modul belajar, artikel, dan asisten AI
+- Pendaftaran Siswa: Sistem registrasi per angkatan/batch secara digital
+- Attendance System: Pencatatan presensi siswa di kelas secara real-time
+- Simple LMS: Portal materi belajar modular terstruktur
+- AI Chatbot: Asisten cerdas untuk membantu menjawab pertanyaan seputar modul, kelas, dan portal
+
+## Contact
+Website:   https://oneacademy.id
+Email:     info@oneacademy.id
+WhatsApp:  https://wa.me/6285128025700
+Phone:     +62 851-2802-5700
+Instagram: https://www.instagram.com/oneacademy.id
+LinkedIn:  https://www.linkedin.com/company/one-academy
+
+## Pages
+- Home:          https://oneacademy.id/
+- About:         https://oneacademy.id/tentang-kami
+- Showcase:      https://oneacademy.id/projects
+- Articles:      https://oneacademy.id/artikel
+- Registration:  https://oneacademy.id/pendaftaran
+- Contact:       https://oneacademy.id/kontak-kami
+- AI Assistant:  https://oneacademy.id/chatbot
+
+## Sitemap
+https://oneacademy.id/sitemap.xml

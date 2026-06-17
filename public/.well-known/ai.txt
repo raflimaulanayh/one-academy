@@ -1,0 +1,11 @@
+Community: One Academy
+Website: https://oneacademy.id
+Description: One Academy is a student technology community at SATU University — Member of BINUS Higher Education. A cross-discipline hub for building tech products, competing in hackathons, and learning technology collaboratively. Majors involved: Informatics, Information Systems, Visual Communication Design, Psychology, Accounting, and Management.
+Contact-Email: oneacademy@satu.ac.id
+Contact-WhatsApp: https://wa.me/6285128025700
+Contact-Phone: +62 851-2802-5700
+Instagram: https://www.instagram.com/oneacademy.satu
+LinkedIn: https://www.linkedin.com/company/one-tech-club
+AI-Usage-Policy: allowed
+AI-Training: disallowed
+Sitemap: https://oneacademy.id/sitemap.xml

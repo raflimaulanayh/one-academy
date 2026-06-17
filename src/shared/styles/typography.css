@@ -1,0 +1,8 @@
+@theme {
+  --font-sans: var(--font-sans), sans-serif;
+}
+
+html,
+body {
+  font-family: var(--font-sans);
+}
