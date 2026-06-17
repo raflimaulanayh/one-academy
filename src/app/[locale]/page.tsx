@@ -1,6 +1,15 @@
 import { siteMetadata } from '@/constants/site-metadata'
 import { type Metadata } from 'next'
 
+import {
+  HeroSection,
+  AboutSection,
+  PricingSection,
+  EventsSection,
+  ProjectsSection,
+  FAQSection,
+  CTASection
+} from '@/components/organisms/landing-page'
 import { GeneralLayout } from '@/components/templates/general-layout'
 
 export const metadata: Metadata = {
@@ -22,7 +31,13 @@ export const metadata: Metadata = {
 export default async function HomePage() {
   return (
     <GeneralLayout>
-      <h1>One Academy</h1>
+      <HeroSection />
+      <AboutSection />
+      <PricingSection />
+      <EventsSection />
+      <ProjectsSection />
+      <FAQSection />
+      <CTASection />
     </GeneralLayout>
   )
 }
