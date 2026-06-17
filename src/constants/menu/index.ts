@@ -5,35 +5,10 @@ export type MenuItem = {
 }
 
 export const SERVICES_MENU: MenuItem[] = [
-  {
-    label: 'Product & Project Build',
-    url: '/program/produk-project',
-    children: [
-      { label: 'Web & Mobile Apps', url: '/program/produk-project/apps' },
-      { label: 'IoT & Hardware Build', url: '/program/produk-project/hardware' }
-    ]
-  },
-  {
-    label: 'Competition & Hackathon',
-    url: '/program/kompetisi',
-    children: [
-      { label: 'Hackathon Prep Class', url: '/program/kompetisi/prep' },
-      { label: 'Competitive Mentoring', url: '/program/kompetisi/mentoring' }
-    ]
-  },
-  {
-    label: 'Edukasi & Workshop',
-    url: '/program/edukasi',
-    children: [
-      { label: 'Regular Sharing Session', url: '/program/edukasi/sharing' },
-      { label: 'Hands-on Bootcamp', url: '/program/edukasi/bootcamp' }
-    ]
-  },
-  {
-    label: 'Kolaborasi Multidisiplin',
-    url: '/program/kolaborasi',
-    children: [{ label: 'Inovasi Lintas Jurusan', url: '/program/kolaborasi/lintas-jurusan' }]
-  }
+  { label: 'Sekolah Dasar (SD)', url: '/#pricing' },
+  { label: 'Sekolah Menengah Pertama (SMP)', url: '/#pricing' },
+  { label: 'Sekolah Menengah Atas (SMA)', url: '/#pricing' },
+  { label: 'Perguruan Tinggi (Universitas)', url: '/#pricing' }
 ]
 
 export const PUBLIC_MENU: {
@@ -42,15 +17,19 @@ export const PUBLIC_MENU: {
 } = {
   en: [
     { label: 'Home', url: '/' },
-    { label: 'Our Projects', url: '/projects' },
-    { label: 'Artikel', url: '/article' },
-    { label: 'About Us', url: '/about' }
+    { label: 'About Us', url: '/#about' },
+    { label: 'Features', url: '/#projects' },
+    { label: 'Live Sessions', url: '/#events' },
+    { label: 'Pricing', url: '/#pricing' },
+    { label: 'FAQ', url: '/#faq' }
   ],
   id: [
     { label: 'Beranda', url: '/' },
-    { label: 'Proyek Kami', url: '/projects' },
-    { label: 'Artikel', url: '/article' },
-    { label: 'Tentang Kami', url: '/about' }
+    { label: 'Tentang Kami', url: '/#about' },
+    { label: 'Fitur', url: '/#projects' },
+    { label: 'Sesi Live', url: '/#events' },
+    { label: 'Paket Belajar', url: '/#pricing' },
+    { label: 'FAQ', url: '/#faq' }
   ]
 }
 

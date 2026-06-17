@@ -16,28 +16,28 @@ export const EventsSection = () => {
       id: 1,
       titleKey: 'event1_title',
       descKey: 'event1_desc',
-      date: '20 Juni 2026',
-      time: '19:00 - 20:30 WIB',
-      mentor: 'Budi Raharjo, M.T. (Dosen Informatika)',
-      badge: 'Teknologi'
+      date: '25 Juni 2026',
+      time: '14:00 - 15:30 WIB',
+      mentor: 'Tim Produk One Academy',
+      badge: 'Demo Produk'
     },
     {
       id: 2,
       titleKey: 'event2_title',
       descKey: 'event2_desc',
-      date: '24 Juni 2026',
-      time: '14:00 - 15:30 WIB',
-      mentor: 'Aisyah Fadilah, B.Des. (UI/UX Designer)',
-      badge: 'Desain & Kreatif'
+      date: '30 Juni 2026',
+      time: '19:00 - 20:30 WIB',
+      mentor: 'Rafli Maulana (Founder One Academy)',
+      badge: 'Workshop'
     },
     {
       id: 3,
       titleKey: 'event3_title',
       descKey: 'event3_desc',
-      date: '27 Juni 2026',
-      time: '09:00 - 11:30 WIB',
-      mentor: 'Rian Hartono (Senior Physics Tutor)',
-      badge: 'Akademik'
+      date: '4 Juli 2026',
+      time: '10:00 - 11:30 WIB',
+      mentor: 'Dr. Aisyah Fadilah (EdTech Specialist)',
+      badge: 'Seminar'
     }
   ]
 
@@ -46,7 +46,7 @@ export const EventsSection = () => {
       <Container>
         {/* Section Header */}
         <div className="mx-auto mb-16 max-w-3xl space-y-4 text-center">
-          <h2 className="text-sm font-bold tracking-wider text-secondary uppercase">Mentoring & Live Sessions</h2>
+          <h2 className="text-sm font-bold tracking-wider text-secondary uppercase">Jadwal Sesi & Acara</h2>
           <h3 className="text-3xl font-extrabold text-text-dark sm:text-4xl">{t('title')}</h3>
           <p className="text-lg text-text-muted">{t('subtitle')}</p>
         </div>
@@ -60,7 +60,7 @@ export const EventsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, margin: '-50px' }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="flex flex-col justify-between rounded-2xl border border-border bg-bg-light p-6 transition-all duration-300 hover:shadow-lg dark:bg-navy-medium/10"
+              className="flex flex-col justify-between rounded-2xl border border-border bg-bg-light p-6 transition-all duration-300 hover:shadow-lg dark:bg-navy-dark"
             >
               <div className="space-y-4">
                 {/* Badge */}
@@ -77,15 +77,15 @@ export const EventsSection = () => {
                 {/* Details */}
                 <div className="space-y-2.5 border-t border-border pt-4 text-xs text-text-muted">
                   <div className="flex items-center gap-2">
-                    <CalendarBlankIcon size={16} weight="duotone" className="text-secondary" />
+                    <CalendarBlankIcon size={16} weight="duotone" className="shrink-0 text-secondary" />
                     <span>{event.date}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <ClockIcon size={16} weight="duotone" className="text-secondary" />
+                    <ClockIcon size={16} weight="duotone" className="shrink-0 text-secondary" />
                     <span>{event.time}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <UserIcon size={16} weight="duotone" className="text-secondary" />
+                    <UserIcon size={16} weight="duotone" className="shrink-0 text-secondary" />
                     <span>{event.mentor}</span>
                   </div>
                 </div>

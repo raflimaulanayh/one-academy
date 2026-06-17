@@ -30,15 +30,15 @@
     "question3": "Di mana saya bisa melihat nilai tugas?"
   },
   "Events": {
-    "title": "Kelas & Sesi Mendatang",
-    "subtitle": "Ikuti kelas virtual dan sesi mentoring interaktif kami yang dijadwalkan khusus untuk membantu belajarmu.",
-    "event1_title": "Pengenalan Algoritma & Pemrograman",
-    "event1_desc": "Pelajari dasar-dasar berpikir komputasional dan pemrograman dasar menggunakan Python.",
-    "event2_title": "Kelas Desain Kreatif dengan Canva",
-    "event2_desc": "Pahami dasar-dasar visual layout, komposisi warna, dan pembuatan media belajar kreatif.",
-    "event3_title": "Sesi Pembahasan Soal Ujian",
-    "event3_desc": "Sesi mentoring intensif bersama tutor untuk persiapan menghadapi ujian semester.",
-    "cta": "Ikuti Kelas"
+    "title": "Seminar & Demo Produk",
+    "subtitle": "Ikuti sesi demo produk, workshop interaktif, dan seminar edukasi kami untuk memahami implementasi LMS modular di instansi Anda.",
+    "event1_title": "Demo & Bedah Fitur One Academy",
+    "event1_desc": "Sesi interaktif daring untuk melihat langsung bagaimana portal siswa, guru, dan admin bekerja secara modular dalam mendukung KBM.",
+    "event2_title": "Workshop: Akselerasi Digitalisasi Sekolah",
+    "event2_desc": "Panduan praktis bagi sekolah dan pengajar dalam memigrasikan materi ajar dan presensi fisik ke ekosistem digital modular.",
+    "event3_title": "Seminar: Implementasi AI dalam Kurikulum",
+    "event3_desc": "Diskusi mendalam bersama praktisi pendidikan mengenai pemanfaatan AI Tutor dalam membantu proses belajar mandiri siswa secara aktif.",
+    "cta": "Daftar Sesi"
   },
   "FAQ": {
     "title": "Pertanyaan yang Sering Diajukan",

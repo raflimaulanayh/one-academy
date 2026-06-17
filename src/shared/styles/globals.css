@@ -46,7 +46,7 @@
 
   --color-background: #071731;
   --color-foreground: #f8fafc;
-  --color-border: #1e293b;
+  --color-border: #132b50;
   --color-ring: #ff9d00;
 
   --color-canvas: #0b192e;
@@ -90,6 +90,19 @@
 
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 4.5rem;
+    /* 72px (h-18) for mobile */
+  }
+
+  @media (min-width: 1024px) {
+    html {
+      scroll-padding-top: 5rem;
+      /* 80px (h-20) for desktop */
+    }
+  }
+
   * {
     @apply border-border;
   }

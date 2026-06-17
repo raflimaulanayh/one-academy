@@ -208,7 +208,13 @@ export default async function RootLayout({
         <GoogleAnalytics gaId="G-EJ95DS4WT5" />
       </head>
 
-      <body suppressHydrationWarning className={cn('min-h-screen bg-white font-sans antialiased', jakartaSans.variable)}>
+      <body
+        suppressHydrationWarning
+        className={cn(
+          'min-h-screen bg-background font-sans text-foreground antialiased transition-colors duration-300',
+          jakartaSans.variable
+        )}
+      >
         <NextTopLoader color="#ff9d00" showSpinner={false} />
         <NextIntlClientProvider locale={locale} messages={messages}>
           <ClientProvider>{children}</ClientProvider>

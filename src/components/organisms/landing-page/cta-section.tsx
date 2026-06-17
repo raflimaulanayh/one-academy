@@ -32,18 +32,14 @@ export const CTASection = () => {
             <div className="flex w-full flex-col justify-center gap-4 pt-4 sm:w-auto sm:flex-row">
               <Button
                 asChild
-                className="group border-transparent bg-secondary font-semibold text-white shadow-md hover:bg-amber-400"
+                className="group border-transparent bg-secondary font-semibold text-primary shadow-md hover:bg-amber-400"
               >
                 <Link href="/register" className="flex items-center justify-center gap-2">
                   {t('primaryButton')}
                   <ArrowRightIcon size={16} weight="bold" className="transition-transform group-hover:translate-x-1" />
                 </Link>
               </Button>
-              <Button
-                variant="outline"
-                asChild
-                className="border-white/30 text-white hover:bg-white/10 dark:border-white/20"
-              >
+              <Button variant="outline" asChild className="border-white/30 dark:border-white/20">
                 <Link href="/about" className="flex items-center justify-center gap-2 font-medium">
                   <ChatIcon size={16} weight="bold" />
                   {t('secondaryButton')}

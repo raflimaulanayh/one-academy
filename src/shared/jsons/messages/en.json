@@ -30,15 +30,15 @@
     "question3": "Where can I check my assignment grades?"
   },
   "Events": {
-    "title": "Upcoming Classes & Sessions",
-    "subtitle": "Stay informed about our interactive virtual classes and mentoring sessions, tailored to help you excel.",
-    "event1_title": "Introduction to Algorithms & Programming",
-    "event1_desc": "Learn the basics of computational thinking and basic programming using Python.",
-    "event2_title": "Creative Design with Canva",
-    "event2_desc": "Understand user interface layouts, color theory, and creating interactive presentation slides.",
-    "event3_title": "Exam Prep Mentoring",
-    "event3_desc": "Exclusive mentoring session with our teachers to prepare for end-of-semester exams.",
-    "cta": "Join Class"
+    "title": "Seminars & Product Demos",
+    "subtitle": "Join our product demo sessions, interactive workshops, and educational seminars to understand modular LMS implementation at your institution.",
+    "event1_title": "One Academy Product Demo & Walkthrough",
+    "event1_desc": "An interactive online session to witness firsthand how our student, teacher, and admin portals work modularly.",
+    "event2_title": "Workshop: Accelerating School Digitization",
+    "event2_desc": "A practical guide for schools and teachers in migrating learning resources and physical attendance to a digital ecosystem.",
+    "event3_title": "Seminar: Implementing AI in Education",
+    "event3_desc": "In-depth discussion with EdTech experts on utilizing AI Tutors to facilitate active self-directed student learning.",
+    "cta": "Register for Session"
   },
   "FAQ": {
     "title": "Frequently Asked Questions",

@@ -67,9 +67,9 @@ export const AboutSection = () => {
             {['1', '2', '3'].map((key) => (
               <div
                 key={key}
-                className="flex flex-col items-center gap-4 rounded-xl border border-border bg-bg-light p-5 transition-shadow duration-300 hover:shadow-lg lg:flex-row lg:items-start dark:bg-navy-medium/20"
+                className="flex flex-col items-center gap-4 rounded-xl border border-border bg-bg-light p-5 transition-shadow duration-300 hover:shadow-lg lg:flex-row lg:items-start dark:bg-navy-dark"
               >
-                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-canvas shadow-sm dark:bg-navy-dark">
+                <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-lg bg-canvas shadow-sm dark:bg-canvas">
                   {getIcon(key)}
                 </div>
                 <div className="space-y-1 text-center lg:text-left">

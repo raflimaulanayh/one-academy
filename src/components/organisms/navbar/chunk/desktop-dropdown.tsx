@@ -1,8 +1,8 @@
 'use client'
 
 import { MenuItem } from '@/constants/menu'
+import { Link } from '@/i18n/routing'
 import { CaretDownIcon, CaretRightIcon } from '@phosphor-icons/react'
-import Link from 'next/link'
 import * as React from 'react'
 
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/atoms/ui/popover'
@@ -51,7 +51,7 @@ export const DesktopDropdown = ({ item, pathname, isOpen, onOpenChange }: Deskto
         onMouseLeave={scheduleClose}
         className={cn(
           'group relative flex items-center gap-1 text-sm font-medium transition-all outline-none',
-          isActive ? 'text-primary' : 'text-slate-900 hover:text-primary'
+          isActive ? 'text-primary' : 'text-text-dark hover:text-primary'
         )}
       >
         {item.label}
@@ -69,7 +69,7 @@ export const DesktopDropdown = ({ item, pathname, isOpen, onOpenChange }: Deskto
         sideOffset={6}
         onMouseEnter={handleOpen}
         onMouseLeave={scheduleClose}
-        className="w-auto min-w-[280px] p-2"
+        className="w-auto min-w-[280px] border border-border bg-canvas p-2"
       >
         <div className="flex">
           <ul className="w-70 shrink-0 space-y-1 overflow-hidden">
@@ -82,6 +82,11 @@ export const DesktopDropdown = ({ item, pathname, isOpen, onOpenChange }: Deskto
                 <li key={child.url}>
                   <Link
                     href={child.url}
+                    onClick={() => {
+                      onOpenChange(false)
+                      setFlyoutItems([])
+                      setFlyoutKey(null)
+                    }}
                     onMouseEnter={() => {
                       if (hasGrandchildren) {
                         setFlyoutItems(child.children ?? [])
@@ -94,8 +99,8 @@ export const DesktopDropdown = ({ item, pathname, isOpen, onOpenChange }: Deskto
                     className={cn(
                       'flex w-full items-center justify-between gap-3 rounded-lg px-3 py-3 text-sm font-medium transition-colors',
                       isChildActive || isThisFlyoutActive
-                        ? 'bg-blue-50 text-primary'
-                        : 'text-slate-700 hover:bg-blue-50 hover:text-primary'
+                        ? 'bg-primary/10 text-primary'
+                        : 'text-text-dark hover:bg-primary/10 hover:text-primary'
                     )}
                   >
                     <span className="flex-1 truncate">{child.label}</span>
@@ -108,7 +113,7 @@ export const DesktopDropdown = ({ item, pathname, isOpen, onOpenChange }: Deskto
 
           {hasFlyout && (
             <React.Fragment>
-              <div className="mx-2 w-px shrink-0 self-stretch bg-slate-200" />
+              <div className="mx-2 w-px shrink-0 self-stretch bg-border" />
               <ul className="w-70 shrink-0 space-y-1 overflow-hidden">
                 {flyoutItems.map((grandchild) => {
                   const isGrandchildActive = pathname === grandchild.url
@@ -117,11 +122,16 @@ export const DesktopDropdown = ({ item, pathname, isOpen, onOpenChange }: Deskto
                     <li key={grandchild.url}>
                       <Link
                         href={grandchild.url}
+                        onClick={() => {
+                          onOpenChange(false)
+                          setFlyoutItems([])
+                          setFlyoutKey(null)
+                        }}
                         className={cn(
                           'flex w-full items-center rounded-lg px-3 py-3 text-sm font-medium transition-colors',
                           isGrandchildActive
-                            ? 'bg-blue-50 text-primary'
-                            : 'text-slate-700 hover:bg-blue-50 hover:text-primary'
+                            ? 'bg-primary/10 text-primary'
+                            : 'text-text-dark hover:bg-primary/10 hover:text-primary'
                         )}
                       >
                         {grandchild.label}

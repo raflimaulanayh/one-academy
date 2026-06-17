@@ -1,12 +1,11 @@
 'use client'
 
 import { PUBLIC_MENU } from '@/constants/menu'
+import { Link, usePathname } from '@/i18n/routing'
 import { ListIcon, XIcon } from '@phosphor-icons/react'
 import { motion, useReducedMotion } from 'framer-motion'
 import { useLocale, useTranslations } from 'next-intl'
 import Image from 'next/image'
-import Link from 'next/link'
-import { usePathname } from 'next/navigation'
 import * as React from 'react'
 
 import { useSplashStore } from '@/hooks/useSplashStore'
@@ -29,6 +28,7 @@ export const Navbar = () => {
   const [openDropdown, setOpenDropdown] = React.useState<string | null>(null)
   const [isScrolled, setIsScrolled] = React.useState(false)
   const [isHidden, setIsHidden] = React.useState(false)
+  const [activeSection, setActiveSection] = React.useState<string>('')
   const lastScrollY = React.useRef(0)
   const reduce = useReducedMotion() ?? false
   const isSplashDone = useSplashStore((s) => s.isDone)
@@ -57,13 +57,79 @@ export const Navbar = () => {
     return () => window.removeEventListener('scroll', handleScroll)
   }, [isOpen])
 
+  // Track active section on scroll
+  React.useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY < 100) {
+        setActiveSection('')
+      }
+    }
+    window.addEventListener('scroll', handleScroll, { passive: true })
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id)
+          }
+        })
+      },
+      {
+        rootMargin: '-20% 0px -50% 0px',
+        threshold: 0
+      }
+    )
+
+    const sectionIds = ['about', 'projects', 'events', 'pricing', 'faq']
+    sectionIds.forEach((id) => {
+      const el = document.getElementById(id)
+      if (el) observer.observe(el)
+    })
+
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+      observer.disconnect()
+    }
+  }, [])
+
+  const handleLinkClick = (url: string, e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === '/') {
+      if (url === '/') {
+        e.preventDefault()
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+        window.history.pushState(null, '', '/')
+      } else if (url.startsWith('/#')) {
+        const targetId = url.replace('/#', '')
+        const element = document.getElementById(targetId)
+        if (element) {
+          e.preventDefault()
+          element.scrollIntoView({ behavior: 'smooth' })
+          window.history.pushState(null, '', url)
+        }
+      }
+    }
+  }
+
+  const isSectionActive = (url: string) => {
+    if (url === '/') {
+      return pathname === '/' && activeSection === ''
+    }
+    if (url.startsWith('/#')) {
+      const targetId = url.replace('/#', '')
+
+      return pathname === '/' && activeSection === targetId
+    }
+
+    return pathname === url
+  }
+
   return (
     <motion.header
       className={cn(
         'fixed top-0 z-50 flex w-full flex-col items-center justify-center transition-all duration-500',
         isScrolled
-          ? 'h-18 border-b border-slate-200 bg-white/80 backdrop-blur-sm lg:h-20'
-          : 'h-20 border-transparent bg-white/40 hover:bg-white lg:h-24'
+          ? 'h-18 border-b border-border bg-canvas/80 backdrop-blur-sm lg:h-20'
+          : 'h-20 border-transparent bg-canvas/40 hover:bg-canvas lg:h-24'
       )}
       initial={{ opacity: reduce ? 1 : 0, y: reduce ? 0 : -16 }}
       animate={{
@@ -73,29 +139,20 @@ export const Navbar = () => {
       transition={{ duration: reduce ? 0 : 0.5, ease: [0.22, 1, 0.36, 1] }}
     >
       <Container className="relative flex w-full shrink-0 items-center justify-between">
-        <Link
-          href="/"
-          className="relative h-10 w-36 shrink-0"
-          onClick={(e) => {
-            if (pathname === '/') {
-              e.preventDefault()
-              window.scrollTo({ top: 0, behavior: 'smooth' })
-            }
-          }}
-        >
+        <Link href="/" className="relative h-10 w-36 shrink-0" onClick={(e) => handleLinkClick('/', e)}>
           <Image
             src="/logo.png"
             alt="Logo One Academy"
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="pointer-events-none object-contain object-left"
+            className="pointer-events-none object-contain object-left dark:brightness-0 dark:invert"
             priority
           />
         </Link>
 
         <nav className="relative hidden shrink-0 items-center gap-6 lg:flex">
           {PUBLIC_MENU[locale].map((item) => {
-            const isActive = pathname === item.url || pathname.startsWith(`${item.url}/`)
+            const isActive = isSectionActive(item.url)
 
             if (item.children) {
               return (
@@ -114,9 +171,10 @@ export const Navbar = () => {
                 key={item.url}
                 aria-label={item.label}
                 href={item.url}
+                onClick={(e) => handleLinkClick(item.url, e)}
                 className={cn(
                   'group relative text-sm font-medium transition-all',
-                  isActive ? 'text-primary' : 'text-slate-900 hover:text-primary'
+                  isActive ? 'text-primary' : 'text-text-dark hover:text-primary'
                 )}
               >
                 {item.label}
@@ -141,7 +199,7 @@ export const Navbar = () => {
           <ThemeToggle />
 
           <button
-            className="flex items-center justify-center rounded-md p-2 text-slate-700 hover:bg-blue-50 lg:hidden"
+            className="flex items-center justify-center rounded-md p-2 text-text-dark hover:bg-primary/10 lg:hidden"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle Menu"
           >
@@ -157,7 +215,7 @@ export const Navbar = () => {
         aria-hidden={!isOpen}
         inert={!isOpen ? true : undefined}
         className={cn(
-          'absolute top-full left-0 w-full overflow-hidden border-b border-slate-200 bg-white shadow-md lg:hidden',
+          'absolute top-full left-0 w-full overflow-hidden border-b border-border bg-canvas shadow-md lg:hidden',
           isOpen ? '' : 'pointer-events-none'
         )}
       >
@@ -165,7 +223,13 @@ export const Navbar = () => {
           <nav className="flex flex-col gap-1">
             {PUBLIC_MENU[locale ?? 'en'].map((item) => (
               <motion.div key={`mobile-${item.url}`} variants={menuItemVar(reduce)}>
-                <MobileMenuItem item={item} pathname={pathname} />
+                <MobileMenuItem
+                  item={item}
+                  pathname={pathname}
+                  isActive={isSectionActive(item.url)}
+                  onClose={() => setIsOpen(false)}
+                  onClick={(e) => handleLinkClick(item.url, e)}
+                />
               </motion.div>
             ))}
           </nav>

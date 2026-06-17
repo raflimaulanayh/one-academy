@@ -33,7 +33,7 @@ export const FAQSection = () => {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="rounded-2xl border border-border bg-bg-light/50 p-6 dark:bg-navy-medium/10"
+          className="rounded-2xl border border-border bg-bg-light/50 p-6 dark:bg-navy-dark"
         >
           <Accordion type="single" collapsible className="w-full">
             {faqs.map((faq) => (

@@ -48,7 +48,7 @@ export const Footer = () => {
     <footer className="w-full">
       <h2 className="sr-only">Footer</h2>
 
-      <nav className="bg-primary py-10 lg:py-14">
+      <nav className="border-t border-border/40 bg-navy-medium py-10 lg:py-14 dark:bg-navy-dark">
         <Container className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-5">
           <div className="flex flex-col gap-4 lg:col-span-2">
             <Link href="/" className="relative h-14 w-50 shrink-0">
@@ -134,7 +134,7 @@ export const Footer = () => {
         </Container>
       </nav>
 
-      <div className="bg-gray-900 py-6">
+      <div className="border-t border-white/5 bg-black py-6 dark:bg-black/30">
         <Container className="flex flex-col items-center justify-between gap-4 md:flex-row">
           <p className="text-center text-xs text-slate-300 sm:text-sm md:text-left">
             &copy; {new Date().getFullYear()} One Academy. All rights reserved.

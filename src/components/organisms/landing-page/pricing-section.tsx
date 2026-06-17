@@ -51,7 +51,7 @@ export const PricingSection = () => {
   ]
 
   return (
-    <section id="pricing" className="border-y border-border bg-bg-light py-20 dark:bg-navy-dark/40">
+    <section id="pricing" className="border-y border-border bg-bg-light py-20 dark:bg-navy-dark">
       <Container>
         {/* Section Header */}
         <div className="mx-auto mb-16 max-w-3xl space-y-4 text-center">
@@ -71,8 +71,8 @@ export const PricingSection = () => {
               transition={{ duration: 0.5, delay: index * 0.1 }}
               className={`relative flex flex-col justify-between rounded-2xl border bg-canvas p-6 transition-all duration-300 ${
                 tier.popular
-                  ? 'z-10 scale-105 border-secondary shadow-xl dark:bg-navy-medium/30'
-                  : 'border-border shadow-md hover:-translate-y-1 hover:shadow-lg dark:bg-navy-medium/10'
+                  ? 'z-10 scale-105 border-secondary shadow-xl dark:bg-canvas'
+                  : 'border-border shadow-md hover:-translate-y-1 hover:shadow-lg dark:bg-canvas'
               }`}
             >
               {tier.popular && (
@@ -111,7 +111,7 @@ export const PricingSection = () => {
                   asChild
                   className={`w-full font-semibold ${
                     tier.popular
-                      ? 'bg-secondary text-white hover:bg-amber-500'
+                      ? 'bg-secondary text-primary hover:bg-amber-500'
                       : 'bg-primary text-white hover:bg-navy-active dark:bg-white/10 dark:text-white dark:hover:bg-white/20'
                   }`}
                 >
