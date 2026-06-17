@@ -140,6 +140,14 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       )
     }
 
+    if (asChild) {
+      return (
+        <Comp className={cn(buttonVariants({ variant, size, rounded, className }))} ref={ref} {...props}>
+          {props.children}
+        </Comp>
+      )
+    }
+
     return (
       <Comp className={cn(buttonVariants({ variant, size, rounded, className }))} ref={ref} {...props}>
         {!loading && leftIcon && leftIcon}
