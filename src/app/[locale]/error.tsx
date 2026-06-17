@@ -20,7 +20,7 @@ export default function Error({ error, reset }: ErrorPageProps) {
   const { isOnline, loading, isMaxRetryReached, handleRetry } = useErrorHandler(reset)
 
   return (
-    <NextIntlClientProvider messages={enMessages}>
+    <NextIntlClientProvider locale="en" messages={enMessages}>
       <GeneralLayout>
         <Container className="flex min-h-[70vh] max-w-3xl! flex-col items-center gap-8 py-16 text-center lg:py-28">
           <div className="flex flex-col items-center space-y-4">
