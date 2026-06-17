@@ -35,7 +35,6 @@ Store and shop surfaces retain the same chassis but switch modes. The product co
 - **Canvas Muted** (`{colors.canvas-muted}` — #f8fafc): Secondary background color.
 - **Ink** (`{colors.ink}` — #101828): Primary text ink color.
 
-
 ### Surface
 
 - **Pure White** (`{colors.canvas}` — #ffffff): The dominant canvas. Content, utility cards, store tiles, configurator grids.
@@ -74,24 +73,24 @@ Store and shop surfaces retain the same chassis but switch modes. The product co
 
 ### Hierarchy
 
-| Token                         | Size | Weight | Line Height | Letter Spacing | Use                                                    |
-| ----------------------------- | ---- | ------ | ----------- | -------------- | ------------------------------------------------------ |
-| `{typography.hero-display}`   | 56px | 600    | 1.07        | -0.28px        | Hero headline; the signature "Apple tight" tracking    |
-| `{typography.display-lg}`     | 40px | 600    | 1.10        | 0              | Tile headlines atop every product tile                 |
+| Token                         | Size | Weight | Line Height | Letter Spacing | Use                                                      |
+| ----------------------------- | ---- | ------ | ----------- | -------------- | -------------------------------------------------------- |
+| `{typography.hero-display}`   | 56px | 600    | 1.07        | -0.28px        | Hero headline; the signature "Apple tight" tracking      |
+| `{typography.display-lg}`     | 40px | 600    | 1.10        | 0              | Tile headlines atop every product tile                   |
 | `{typography.display-md}`     | 34px | 600    | 1.47        | -0.374px       | Section heads (Plus Jakarta Sans at display proportions) |
-| `{typography.lead}`           | 28px | 400    | 1.14        | 0.196px        | Product tile subcopy                                   |
-| `{typography.lead-airy}`      | 24px | 300    | 1.5         | 0              | Environment-page lead paragraphs (the rare weight 300) |
-| `{typography.tagline}`        | 21px | 600    | 1.19        | 0.231px        | Sub-tile tagline; sub-nav category name                |
-| `{typography.body-strong}`    | 17px | 600    | 1.24        | -0.374px       | Inline strong emphasis                                 |
-| `{typography.body}`           | 17px | 400    | 1.47        | -0.374px       | Default paragraph                                      |
-| `{typography.dense-link}`     | 17px | 400    | 2.41        | 0              | Footer / store utility link lists (relaxed leading)    |
-| `{typography.caption}`        | 14px | 400    | 1.43        | -0.224px       | Secondary captions, button text                        |
-| `{typography.caption-strong}` | 14px | 600    | 1.29        | -0.224px       | Emphasized captions                                    |
-| `{typography.button-large}`   | 18px | 300    | 1.0         | 0              | Store hero CTAs (the rare weight 300)                  |
-| `{typography.button-utility}` | 14px | 400    | 1.29        | -0.224px       | Utility/nav button labels                              |
-| `{typography.fine-print}`     | 12px | 400    | 1.0         | -0.12px        | Fine-print, footer body                                |
-| `{typography.micro-legal}`    | 10px | 400    | 1.3         | -0.08px        | Micro legal disclaimers                                |
-| `{typography.nav-link}`       | 12px | 400    | 1.0         | -0.12px        | Global nav menu items                                  |
+| `{typography.lead}`           | 28px | 400    | 1.14        | 0.196px        | Product tile subcopy                                     |
+| `{typography.lead-airy}`      | 24px | 300    | 1.5         | 0              | Environment-page lead paragraphs (the rare weight 300)   |
+| `{typography.tagline}`        | 21px | 600    | 1.19        | 0.231px        | Sub-tile tagline; sub-nav category name                  |
+| `{typography.body-strong}`    | 17px | 600    | 1.24        | -0.374px       | Inline strong emphasis                                   |
+| `{typography.body}`           | 17px | 400    | 1.47        | -0.374px       | Default paragraph                                        |
+| `{typography.dense-link}`     | 17px | 400    | 2.41        | 0              | Footer / store utility link lists (relaxed leading)      |
+| `{typography.caption}`        | 14px | 400    | 1.43        | -0.224px       | Secondary captions, button text                          |
+| `{typography.caption-strong}` | 14px | 600    | 1.29        | -0.224px       | Emphasized captions                                      |
+| `{typography.button-large}`   | 18px | 300    | 1.0         | 0              | Store hero CTAs (the rare weight 300)                    |
+| `{typography.button-utility}` | 14px | 400    | 1.29        | -0.224px       | Utility/nav button labels                                |
+| `{typography.fine-print}`     | 12px | 400    | 1.0         | -0.12px        | Fine-print, footer body                                  |
+| `{typography.micro-legal}`    | 10px | 400    | 1.3         | -0.08px        | Micro legal disclaimers                                  |
+| `{typography.nav-link}`       | 12px | 400    | 1.0         | -0.12px        | Global nav menu items                                    |
 
 ### Principles
 

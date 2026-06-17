@@ -42,9 +42,9 @@ const ChatInputFormComponent = ({ isLoading, messageCount, onSubmit, onSuggested
     <motion.div
       initial={{ y: 20, opacity: 0 }}
       animate={{ y: 0, opacity: 1 }}
-      className="relative z-10 border-t border-white/50 bg-white/50 shadow-lg backdrop-blur-sm"
+      className="relative z-10 border-t border-white/50 bg-white/50 backdrop-blur-sm dark:bg-white/10"
     >
-      <Container className="max-w-5xl! py-4 md:py-6">
+      <Container className="py-4 md:py-6">
         <AnimatePresence>
           {messageCount === 0 && (
             <motion.div

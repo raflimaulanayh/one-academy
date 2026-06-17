@@ -16,19 +16,20 @@ You are an expert full-stack developer assistant specialized in Next.js 16 and m
 **One Academy** adalah platform LMS (Learning Management System) SaaS yang dirancang khusus untuk mendukung seluruh jenjang pendidikan mulai dari Sekolah Dasar (SD), Sekolah Menengah Pertama (SMP), Sekolah Menengah Atas (SMA), hingga Perguruan Tinggi (Universitas).
 
 Tujuan utama sistem ini adalah menyediakan lingkungan belajar modular yang terintegrasi untuk siswa/mahasiswa dan pengajar:
+
 1. **Landing Page & Profile (Public):** Pengenalan platform, pendaftaran siswa per batch, artikel edukasi, dan asisten belajar AI.
 2. **Student Member Portal (Active):** Portal utama bagi siswa/mahasiswa untuk melacak kehadiran, mengakses materi LMS modular, mengerjakan tugas, dan memantau nilai akademik.
 3. **Lecturer & Admin Dashboard (Deferred):** CMS manajemen modul, monitoring keaktifan siswa, dan rekapitulasi data akademik.
 
 ### Core Features
 
-| No  | Feature                 | Description                                                                      |
-| --- | ----------------------- | -------------------------------------------------------------------------------- |
-| 1   | **Landing Page**        | Public website: informasi platform, showcase modul belajar, artikel, chatbot      |
-| 2   | **Pendaftaran Siswa**   | Sistem registrasi siswa per batch/angkatan                                       |
-| 3   | **Attendance System**   | Pencatatan kehadiran siswa di setiap kelas/kegiatan belajar                      |
-| 4   | **Modular LMS**         | Platform modul pembelajaran (LMS) modular sesuai tingkat pendidikan              |
-| 5   | **Notifikasi Akademik** | Pemberitahuan tugas dan pengumuman dari pengajar                                  |
+| No  | Feature                 | Description                                                                  |
+| --- | ----------------------- | ---------------------------------------------------------------------------- |
+| 1   | **Landing Page**        | Public website: informasi platform, showcase modul belajar, artikel, chatbot |
+| 2   | **Pendaftaran Siswa**   | Sistem registrasi siswa per batch/angkatan                                   |
+| 3   | **Attendance System**   | Pencatatan kehadiran siswa di setiap kelas/kegiatan belajar                  |
+| 4   | **Modular LMS**         | Platform modul pembelajaran (LMS) modular sesuai tingkat pendidikan          |
+| 5   | **Notifikasi Akademik** | Pemberitahuan tugas dan pengumuman dari pengajar                             |
 
 ### Student Role Flow
 
@@ -39,13 +40,13 @@ Tujuan utama sistem ini adalah menyediakan lingkungan belajar modular yang terin
 
 ### User Roles & Flow
 
-| Role            | Access         | Description                                                                                                 |
-| --------------- | -------------- | ----------------------------------------------------------------------------------------------------------- |
-| **STUDENT**     | `/dashboard/*` | **(PRIMARY ACTIVE)** Siswa/Mahasiswa aktif — Akses portal belajar, presensi kelas, dan materi LMS.          |
-| **SUPER_ADMIN** | `/admin/*`     | *(DEFERRED)* Kontrol penuh sistem dan database (Level 100).                                                 |
-| **ADMIN**       | `/admin/*`     | *(DEFERRED)* Pengelola instansi/sekolah — Manajemen kelas dan modul LMS (Level 80).                         |
-| **TEACHER**     | `/admin/*`     | *(DEFERRED)* Guru/Dosen/Mentor — Menginput tugas, materi, dan menilai siswa (Level 60).                      |
-| **CANDIDATE**   | `/register/*`  | Calon siswa baru — Mengisi formulir pendaftaran (Level 20).                                                 |
+| Role            | Access         | Description                                                                                        |
+| --------------- | -------------- | -------------------------------------------------------------------------------------------------- |
+| **STUDENT**     | `/dashboard/*` | **(PRIMARY ACTIVE)** Siswa/Mahasiswa aktif — Akses portal belajar, presensi kelas, dan materi LMS. |
+| **SUPER_ADMIN** | `/admin/*`     | _(DEFERRED)_ Kontrol penuh sistem dan database (Level 100).                                        |
+| **ADMIN**       | `/admin/*`     | _(DEFERRED)_ Pengelola instansi/sekolah — Manajemen kelas dan modul LMS (Level 80).                |
+| **TEACHER**     | `/admin/*`     | _(DEFERRED)_ Guru/Dosen/Mentor — Menginput tugas, materi, dan menilai siswa (Level 60).            |
+| **CANDIDATE**   | `/register/*`  | Calon siswa baru — Mengisi formulir pendaftaran (Level 20).                                        |
 
 **Authentication Flow:**
 
@@ -96,7 +97,7 @@ The project uses a custom design system defined in `src/shared/styles/globals.cs
 - Use these CSS variables for all theming — do not introduce arbitrary colors.
 - CTA gradients use `.bg-cta-gradient` (a linear gradient from primary to secondary).
 - All interactive elements (`button`, `a`) have `hover:scale-[0.98]` by default.
-- Use `cn()` from `@/utils` for conditional Tailwind class merging (powered by `clsx` + `tailwind-merge`).` + `tailwind-merge`).
+- Use `cn()` from `@/utils` for conditional Tailwind class merging (powered by `clsx` + `tailwind-merge`).`+`tailwind-merge`).
 
 ---
 

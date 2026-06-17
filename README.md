@@ -20,7 +20,7 @@
 
 ## Tentang One Academy
 
-**One Academy** adalah platform Learning Management System (LMS) modular, modern, dan terintegrasi yang dirancang untuk melayani seluruh jenjang pendidikan: SD, SMP, SMA, dan Perguruan Tinggi (Universitas). 
+**One Academy** adalah platform Learning Management System (LMS) modular, modern, dan terintegrasi yang dirancang untuk melayani seluruh jenjang pendidikan: SD, SMP, SMA, dan Perguruan Tinggi (Universitas).
 
 Untuk kebutuhan presentasi klien saat ini, platform berfokus secara eksklusif pada peran **Siswa/Student/Mahasiswa** untuk mengakses materi pembelajaran, melacak kehadiran kelas, dan berinteraksi dengan AI tutor.
 

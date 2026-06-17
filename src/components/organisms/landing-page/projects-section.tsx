@@ -162,7 +162,7 @@ export const ProjectsSection = () => {
 
                 {/* Content */}
                 <div className="flex flex-1 flex-col justify-between space-y-3">
-                  <div className="space-y-1.5">
+                  <div className="flex flex-col gap-1.5">
                     <div className="flex flex-wrap items-center justify-between gap-2">
                       <h4 className="text-base leading-snug font-extrabold text-text-dark transition-colors duration-300 group-hover:text-primary dark:group-hover:text-secondary">
                         {t(project.titleKey as any)}

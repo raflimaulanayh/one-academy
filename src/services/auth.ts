@@ -11,16 +11,22 @@ export const authOptions: NextAuthOptions = {
         email: { label: 'Email', type: 'email' },
         password: { label: 'Password', type: 'password' }
       },
-      async authorize(credentials): Promise<User | null> {
+      async authorize(credentials, req): Promise<User | null> {
         if (!credentials?.email || !credentials?.password) {
           return null
         }
 
         try {
           const baseUrl = process.env.NEXTAUTH_URL || 'http://localhost:3000'
+          const headers: HeadersInit = { 'Content-Type': 'application/json' }
+
+          if (req?.headers?.cookie) {
+            headers.cookie = req.headers.cookie
+          }
+
           const response = await fetch(`${baseUrl}/api/auth/login`, {
             method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
+            headers,
             body: JSON.stringify({
               email: credentials.email,
               password: credentials.password

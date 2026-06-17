@@ -7,7 +7,7 @@ import * as React from 'react'
 
 import { Container } from '@/components/templates/container'
 
-import { ChatErrorBanner, ChatHeader, ChatInputForm, ChatMessage, ChatTypingIndicator } from './chunk'
+import { ChatErrorBanner, ChatInputForm, ChatMessage, ChatTypingIndicator } from './chunk'
 import type { ChatMessageType } from './chunk/types'
 
 const CHAT_TRANSPORT = new DefaultChatTransport({
@@ -52,6 +52,23 @@ export const ChabotSection = () => {
     })
   }, [messages])
 
+  React.useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const searchParams = new URLSearchParams(window.location.search)
+      const prompt = searchParams.get('prompt')
+      if (prompt && messages.length === 0 && !isLoading) {
+        // Clear query parameter from URL so it doesn't trigger again on refresh
+        const newUrl = window.location.pathname
+        window.history.replaceState({}, '', newUrl)
+
+        // Wait a brief moment to let the chat initialize
+        setTimeout(() => {
+          sendMessage({ text: prompt })
+        }, 500)
+      }
+    }
+  }, [messages.length, isLoading, sendMessage])
+
   const handleSubmit = React.useCallback(
     (message: string) => {
       setErrorMessage(null)
@@ -85,18 +102,16 @@ export const ChabotSection = () => {
   const displayMessages: ChatMessageType[] = [welcomeMessage, ...(messages as ChatMessageType[])]
 
   return (
-    <div className="flex h-screen flex-col overflow-hidden bg-slate-50">
-      <ChatHeader />
-
+    <div className="flex h-full flex-col overflow-hidden">
       <div
         data-lenis-prevent
-        className="flex-1 overflow-y-auto py-8"
+        className="flex-1 overflow-y-auto py-4 md:py-8"
         style={{
           scrollbarWidth: 'thin',
           scrollbarColor: 'rgb(203 213 225) transparent'
         }}
       >
-        <Container className="max-w-5xl! space-y-6">
+        <Container className="max-w-5xl! space-y-4 md:space-y-6">
           {displayMessages.map((message, idx) => (
             <ChatMessage key={message.id} id={message.id} role={message.role} parts={message.parts} index={idx} />
           ))}

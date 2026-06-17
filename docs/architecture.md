@@ -23,17 +23,17 @@ Terletak pada folder `src/components`, komponen dibagi menjadi 5 tingkatan utama
 
 ## Struktur Folder Luar
 
-| Folder           | Kegunaan                                                                                         |
-| ---------------- | ------------------------------------------------------------------------------------------------ |
-| `src/app/`       | Struktur utama aplikasi Next.js (Pages, Routing, API, Layouts).                                  |
+| Folder           | Kegunaan                                                                                        |
+| ---------------- | ----------------------------------------------------------------------------------------------- |
+| `src/app/`       | Struktur utama aplikasi Next.js (Pages, Routing, API, Layouts).                                 |
 | `src/constants/` | Pusat penyimpanan data statis seperti data menu, metadata, informasi platform, dan konfigurasi. |
-| `src/db/`        | Schema Drizzle ORM, konfigurasi database, dan migrasi.                                           |
-| `src/hooks/`     | Menyimpan custom React hooks untuk logika yang dapat digunakan kembali ke banyak komponen.       |
-| `src/services/`  | Tempat penanganan permintaan API (Axios/SWR) dan logika autentikasi (NextAuth + Supabase).       |
-| `src/shared/`    | Aset global seperti file CSS (globals.css), tipografi, dan file CSS khusus lainnya.              |
-| `src/utils/`     | Kumpulan fungsi pembantu (helper) untuk manipulasi data (format angka, tanggal, `cn`, dsb).      |
-| `supabase/`      | Konfigurasi Supabase, seed data, dan migrasi database.                                           |
-| `types/`         | Definisi tipe TypeScript global dan module augmentation (misalnya untuk NextAuth).               |
+| `src/db/`        | Schema Drizzle ORM, konfigurasi database, dan migrasi.                                          |
+| `src/hooks/`     | Menyimpan custom React hooks untuk logika yang dapat digunakan kembali ke banyak komponen.      |
+| `src/services/`  | Tempat penanganan permintaan API (Axios/SWR) dan logika autentikasi (NextAuth + Supabase).      |
+| `src/shared/`    | Aset global seperti file CSS (globals.css), tipografi, dan file CSS khusus lainnya.             |
+| `src/utils/`     | Kumpulan fungsi pembantu (helper) untuk manipulasi data (format angka, tanggal, `cn`, dsb).     |
+| `supabase/`      | Konfigurasi Supabase, seed data, dan migrasi database.                                          |
+| `types/`         | Definisi tipe TypeScript global dan module augmentation (misalnya untuk NextAuth).              |
 
 ## Middleware & Proteksi (Role-Based Access Control)
 
@@ -45,10 +45,10 @@ Seluruh logika proteksi rute diatur dalam `src/proxy.ts`. Middleware ini berfung
 
 ### Role & Akses
 
-| Role        | Akses          | Deskripsi                                                           |
-| ----------- | -------------- | ------------------------------------------------------------------- |
-| **ADMIN**   | `/admin/*`     | Administrator platform — kelola modul, sekolah, dan database.       |
-| **STUDENT** | `/dashboard/*` | Siswa/Mahasiswa — akses portal belajar, kehadiran kelas, dan LMS.   |
+| Role        | Akses          | Deskripsi                                                         |
+| ----------- | -------------- | ----------------------------------------------------------------- |
+| **ADMIN**   | `/admin/*`     | Administrator platform — kelola modul, sekolah, dan database.     |
+| **STUDENT** | `/dashboard/*` | Siswa/Mahasiswa — akses portal belajar, kehadiran kelas, dan LMS. |
 
 ## Lokalisasi Bilingual (Bilingual Setup)
 

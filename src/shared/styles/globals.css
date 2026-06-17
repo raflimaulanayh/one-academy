@@ -88,7 +88,6 @@
   --color-navy-active: var(--color-navy-active);
 }
 
-
 @layer base {
   html {
     scroll-behavior: smooth;
@@ -118,5 +117,9 @@
 
   .bg-gradient-blue {
     background: linear-gradient(229deg, #003057 5.29%, #004d80 46.35%, #006eb5 99.34%);
+  }
+
+  .bg-cta-gradient {
+    background: linear-gradient(135deg, #008ae3 0%, #00b0ff 100%);
   }
 }
