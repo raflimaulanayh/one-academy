@@ -36,12 +36,10 @@ export default async function DocsPage(props: { params: Params }) {
 
   const absoluteFilePath = path.join(process.cwd(), 'docs', relativeFilePath)
   let markdownContent = ''
-  let fileExists = false
 
   try {
     if (fs.existsSync(absoluteFilePath)) {
       markdownContent = fs.readFileSync(absoluteFilePath, 'utf8')
-      fileExists = true
     } else {
       markdownContent =
         '# 404: Dokumen Tidak Ditemukan\nMaaf, berkas dokumentasi yang Anda cari tidak ada atau telah dipindahkan.'
