@@ -183,50 +183,61 @@ export default function DashboardPage() {
         </div>
 
         {/* GPA / Average Grade Card */}
-        <div className="flex items-center gap-4.5 rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_4px_12px_rgba(0,48,87,0.02)] transition-all hover:shadow-md dark:border-neutral-800/60 dark:bg-[#1e1e1e]">
+        <div className="group relative flex items-center gap-4.5 rounded-2xl border border-slate-200 bg-white p-5 shadow-[0_4px_12px_rgba(0,48,87,0.02)] transition-all hover:shadow-md dark:border-neutral-800/60 dark:bg-[#1e1e1e]">
           <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-purple-500/10 text-purple-500 dark:bg-purple-500/20">
             <TrophyIcon size={22} weight="bold" />
           </div>
           <div className="min-w-0 flex-1">
             <div className="flex items-center justify-between gap-1">
-              <span className="text-[10px] font-bold tracking-wider text-text-muted uppercase">{t('statAverage')}</span>
+              <Link
+                href="/dashboard/grades"
+                className="text-[10px] font-bold tracking-wider text-text-muted uppercase transition-colors hover:text-primary dark:hover:text-secondary"
+              >
+                {t('statAverage')}
+              </Link>
               <button
                 onClick={(e) => {
                   e.preventDefault()
+                  e.stopPropagation()
                   toggleGradesVisibility()
                 }}
-                className="rounded p-1 text-text-muted hover:bg-slate-100 hover:text-text-dark focus:outline-none dark:hover:bg-neutral-800"
+                className="relative z-10 rounded p-1 text-text-muted hover:bg-slate-100 hover:text-text-dark focus:outline-none dark:hover:bg-neutral-800"
                 title={showGrades ? 'Sembunyikan Nilai' : 'Tampilkan Nilai'}
               >
                 {showGrades ? <EyeIcon size={14} weight="bold" /> : <EyeSlashIcon size={14} weight="bold" />}
               </button>
             </div>
-            <div
-              className={cn(
-                'mt-0.5 flex items-center gap-1.5 transition-all duration-300',
-                !showGrades && 'blur-md select-none'
-              )}
-            >
-              {userData.tier === 'univ' ? (
-                <>
-                  <span className="text-lg font-black text-text-dark dark:text-white">3.85</span>
-                  <span className="text-[10px] text-text-muted">/ 4.00</span>
-                  <span className="ml-1 rounded-md bg-purple-500/10 px-2 py-0.5 text-[8px] font-black text-purple-500 uppercase">
-                    IPK
-                  </span>
-                </>
-              ) : (
-                <>
-                  <span className="text-lg font-black text-text-dark dark:text-white">
-                    {userData.tier === 'sd' ? '92.5' : userData.tier === 'smp' ? '88.2' : '85.0'}
-                  </span>
-                  <span className="text-[10px] text-text-muted">/ 100</span>
-                  <span className="ml-1 rounded-md bg-primary/10 px-2 py-0.5 text-[9px] font-black text-primary dark:bg-secondary/15 dark:text-secondary">
-                    {userData.tier === 'sd' ? 'A' : userData.tier === 'smp' ? 'A-' : 'B+'}
-                  </span>
-                </>
-              )}
-            </div>
+            <Link href="/dashboard/grades" className="block focus:outline-none">
+              <div
+                className={cn(
+                  'mt-0.5 flex items-center gap-1.5 transition-all duration-300',
+                  !showGrades && 'blur-md select-none'
+                )}
+              >
+                {userData.tier === 'univ' ? (
+                  <>
+                    <span className="text-lg font-black text-text-dark dark:text-white">3.85</span>
+                    <span className="text-[10px] text-text-muted">/ 4.00</span>
+                    <span className="ml-1 rounded-md bg-purple-500/10 px-2 py-0.5 text-[8px] font-black text-purple-500 uppercase">
+                      IPK
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    <span className="text-lg font-black text-text-dark dark:text-white">
+                      {userData.tier === 'sd' ? '92.5' : userData.tier === 'smp' ? '88.2' : '85.0'}
+                    </span>
+                    <span className="text-[10px] text-text-muted">/ 100</span>
+                    <span className="ml-1 rounded-md bg-primary/10 px-2 py-0.5 text-[9px] font-black text-primary dark:bg-secondary/15 dark:text-secondary">
+                      {userData.tier === 'sd' ? 'A' : userData.tier === 'smp' ? 'A-' : 'B+'}
+                    </span>
+                  </>
+                )}
+              </div>
+              <div className="mt-1 text-[9px] font-bold text-primary opacity-80 transition-opacity group-hover:opacity-100 dark:text-secondary">
+                {currentLang === 'id' ? 'Lihat Detail Transkrip →' : 'View Detailed Transcript →'}
+              </div>
+            </Link>
           </div>
         </div>
       </div>
