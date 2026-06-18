@@ -234,8 +234,8 @@ export default function DashboardPage() {
       {/* ─── MOBILE VIEW (lg:hidden) ─── */}
       <div className="block space-y-5 pb-12 lg:hidden">
         {/* Quick Menu Icons Card */}
-        <div className="rounded-2xl border border-slate-100 bg-white p-4.5 shadow-sm dark:border-neutral-800/60 dark:bg-[#1e1e1e]">
-          <div className="grid grid-cols-4 gap-2 text-center">
+        <div className="rounded-2xl border border-slate-100 bg-white p-4 shadow-sm dark:border-neutral-800/60 dark:bg-[#1e1e1e]">
+          <div className="grid grid-cols-5 gap-1 text-center">
             <Link href="/dashboard/lms" className="flex flex-col items-center gap-1.5 focus:outline-none">
               <div className="flex h-11 w-11 items-center justify-center rounded-full bg-blue-500/10 text-primary dark:bg-primary/20">
                 <BookOpenIcon size={22} weight="bold" />
@@ -258,6 +258,15 @@ export default function DashboardPage() {
                 <FileTextIcon size={22} weight="bold" />
               </div>
               <span className="text-[10px] font-extrabold text-[#333] dark:text-white">Tugas</span>
+            </Link>
+
+            <Link href="/dashboard/leaderboard" className="flex flex-col items-center gap-1.5 focus:outline-none">
+              <div className="flex h-11 w-11 items-center justify-center rounded-full bg-yellow-500/10 text-yellow-600 dark:bg-yellow-500/20 dark:text-yellow-500">
+                <TrophyIcon size={22} weight="bold" />
+              </div>
+              <span className="text-[10px] font-extrabold text-[#333] dark:text-white">
+                {currentLang === 'id' ? 'Peringkat' : 'Rank'}
+              </span>
             </Link>
 
             <Link href="/dashboard/settings" className="flex flex-col items-center gap-1.5 focus:outline-none">

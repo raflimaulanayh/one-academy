@@ -31,7 +31,8 @@ export async function POST(req: Request) {
       ? 'Show recommendations for One Academy modules or levels as visual cards. Call this tool IMMEDIATELY when the user asks about courses, syllabus, modular learning paths, registration, SD, SMP, SMA, or university programs.'
       : 'Tampilkan rekomendasi modul belajar atau jenjang pendidikan One Academy sebagai visual card. Panggil tool ini SEGERA ketika user menanyakan kelas, kursus, modul pembelajaran, pendaftaran, SD, SMP, SMA, atau universitas.'
 
-    const coreMessages = convertToCoreMessages(messages)
+    const isCoreMessages = Array.isArray(messages) && messages.every((m: any) => m && typeof m === 'object' && !('id' in m))
+    const coreMessages = isCoreMessages ? messages : convertToCoreMessages(messages)
 
     const result = streamText({
       model: google(process.env.AI_MODEL || 'gemini-2.5-flash'),

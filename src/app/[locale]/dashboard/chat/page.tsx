@@ -18,6 +18,7 @@ import {
 } from '@phosphor-icons/react'
 import { useTranslations } from 'next-intl'
 import { useState, useEffect, useRef } from 'react'
+import ReactMarkdown from 'react-markdown'
 import { toast } from 'sonner'
 
 import { cn } from '@/utils'
@@ -32,43 +33,65 @@ const getParticipants = (messages: Message[], selfName: string): string[] => {
   return Array.from(names)
 }
 
-// Render text with @mention highlighting and **bold** support
-function RenderContent({ text, selfName }: { text: string; selfName: string }) {
-  // Split on @Mentions and **bold**
-  const parts = text.split(/(@[\w\s.-]+(?=\s|$|[^a-zA-Z0-9_.\s-])|\*\*[^*]+\*\*)/)
+// Render text with full markdown support and precise @mention highlighting
+function RenderContent({ text, selfName, participants }: { text: string; selfName: string; participants: string[] }) {
+  // Build a regex from participants list plus some common aliases
+  const allNames = [...participants, 'AI-Tutor', 'AI']
+
+  const escapedNames = allNames.map((name) => name.replace(/[-\\^$*+?.()|[\]{}]/g, '\\$&'))
+
+  // Sort descending by length so we match longer names first
+  escapedNames.sort((a, b) => b.length - a.length)
+
+  const mentionRegex = new RegExp(`@(${escapedNames.join('|')})(?=\\b|\\s|$|[^a-zA-Z0-9])`, 'gi')
+
+  // Preprocess text to format mentions as special markdown links
+  const preprocessedText = text.replace(mentionRegex, (match, name) => {
+    return `[@${name}](#/mention/${encodeURIComponent(name)})`
+  })
 
   return (
-    <>
-      {parts.map((part, i) => {
-        if (part.startsWith('@')) {
-          const name = part.slice(1).trim()
-          const isSelfMention = name.toLowerCase() === selfName.toLowerCase()
+    <ReactMarkdown
+      components={{
+        p: ({ children }) => <span className="mb-1.5 block leading-relaxed last:mb-0">{children}</span>,
+        ul: ({ children }) => <ul className="mb-2 list-disc space-y-0.5 pl-5">{children}</ul>,
+        ol: ({ children }) => <ol className="mb-2 list-decimal space-y-0.5 pl-5">{children}</ol>,
+        li: ({ children }) => <li>{children}</li>,
+        strong: ({ children }) => <strong className="font-bold text-slate-900 dark:text-white">{children}</strong>,
+        a: ({ href, children }) => {
+          if (href?.startsWith('#/mention/')) {
+            const name = decodeURIComponent(href.slice(10))
+            const isSelfMention = name.toLowerCase() === selfName.toLowerCase()
+
+            return (
+              <span
+                className={cn(
+                  'mx-0.5 inline-flex items-center rounded px-1 py-px text-[12px] font-black',
+                  isSelfMention
+                    ? 'bg-amber-100 text-amber-700 dark:bg-amber-400/15 dark:text-amber-400'
+                    : 'bg-primary/10 text-primary dark:bg-secondary/15 dark:text-secondary'
+                )}
+              >
+                @{name}
+              </span>
+            )
+          }
 
           return (
-            <span
-              key={i}
-              className={cn(
-                'mx-0.5 inline-flex items-center rounded px-1 py-px text-[12px] font-black',
-                isSelfMention
-                  ? 'bg-amber-100 text-amber-700 dark:bg-amber-400/15 dark:text-amber-400'
-                  : 'bg-primary/10 text-primary dark:bg-secondary/15 dark:text-secondary'
-              )}
+            <a
+              href={href}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-primary hover:underline dark:text-secondary"
             >
-              @{name}
-            </span>
+              {children}
+            </a>
           )
         }
-        if (part.startsWith('**') && part.endsWith('**')) {
-          return (
-            <strong key={i} className="font-bold">
-              {part.slice(2, -2)}
-            </strong>
-          )
-        }
-
-        return <span key={i}>{part}</span>
-      })}
-    </>
+      }}
+    >
+      {preprocessedText}
+    </ReactMarkdown>
   )
 }
 
@@ -243,6 +266,7 @@ export default function ChatPage() {
       const reader = response.body?.getReader()
       const decoder = new TextDecoder()
       let accumulatedText = ''
+      let lineBuffer = ''
 
       if (reader) {
         while (true) {
@@ -250,36 +274,67 @@ export default function ChatPage() {
           if (done) break
 
           const chunk = decoder.decode(value, { stream: true })
-          const cleanedText = chunk
-            .split('\n')
-            .filter((line) => line.startsWith('0:'))
-            .map((line) => JSON.parse(line.substring(2)))
-            .join('')
+          lineBuffer += chunk
 
-          accumulatedText += cleanedText || chunk.replace(/[0-9]:"([^"]*)"/g, '$1').replace(/\\n/g, '\n')
+          const lines = lineBuffer.split('\n')
+          lineBuffer = lines.pop() || ''
 
-          useChatStore.setState((state) => {
-            const courseChat = state.chats[activeCourseId]
-            if (!courseChat) return state
-            const channelMessages = [...courseChat.subChannels[activeSubChannel]]
-            if (channelMessages.length > 0) {
-              const lastMsg = { ...channelMessages[channelMessages.length - 1] }
-              if (lastMsg.senderRole === 'ai') {
-                lastMsg.content = accumulatedText
-                channelMessages[channelMessages.length - 1] = lastMsg
+          let cleanedText = ''
+          for (const line of lines) {
+            const trimmed = line.trim()
+            if (!trimmed) continue
+
+            if (trimmed.startsWith('data:')) {
+              try {
+                const jsonStr = trimmed.slice(5).trim()
+                const parsed = JSON.parse(jsonStr)
+                if (parsed.type === 'text-delta' && typeof parsed.delta === 'string') {
+                  cleanedText += parsed.delta
+                }
+              } catch {
+                // Ignore parse errors on incomplete JSON
+              }
+            } else if (trimmed.startsWith('0:')) {
+              try {
+                cleanedText += JSON.parse(trimmed.substring(2))
+              } catch {
+                // Ignore parse errors
+              }
+            } else {
+              // Fallback match for legacy format
+              const match = trimmed.match(/^0:"(.*)"$/)
+              if (match) {
+                cleanedText += match[1].replace(/\\n/g, '\n')
               }
             }
+          }
 
-            return {
-              chats: {
-                ...state.chats,
-                [activeCourseId]: {
-                  ...courseChat,
-                  subChannels: { ...courseChat.subChannels, [activeSubChannel]: channelMessages }
+          if (cleanedText) {
+            accumulatedText += cleanedText
+
+            useChatStore.setState((state) => {
+              const courseChat = state.chats[activeCourseId]
+              if (!courseChat) return state
+              const channelMessages = [...courseChat.subChannels[activeSubChannel]]
+              if (channelMessages.length > 0) {
+                const lastMsg = { ...channelMessages[channelMessages.length - 1] }
+                if (lastMsg.senderRole === 'ai') {
+                  lastMsg.content = accumulatedText
+                  channelMessages[channelMessages.length - 1] = lastMsg
                 }
               }
-            }
-          })
+
+              return {
+                chats: {
+                  ...state.chats,
+                  [activeCourseId]: {
+                    ...courseChat,
+                    subChannels: { ...courseChat.subChannels, [activeSubChannel]: channelMessages }
+                  }
+                }
+              }
+            })
+          }
         }
       }
     } catch (err) {
@@ -338,7 +393,7 @@ export default function ChatPage() {
 
   const getAvatarStyle = (role: string) => {
     if (role === 'lecturer') return 'bg-[#003057] text-white'
-    if (role === 'ai') return 'bg-gradient-to-br from-primary to-secondary text-white'
+    if (role === 'ai') return 'bg-gradient-to-br from-primary to-accent-blue text-white'
 
     return 'bg-slate-200 text-slate-600 dark:bg-neutral-700 dark:text-neutral-200'
   }
@@ -353,7 +408,7 @@ export default function ChatPage() {
   }
 
   return (
-    <div className="flex h-[calc(100vh-176px)] overflow-hidden md:h-[calc(100vh-110px)]">
+    <div className="flex h-[calc(100vh-176px)] overflow-hidden rounded-lg shadow md:h-[calc(100vh-110px)]">
       {/* ─── SIDEBAR ─── */}
       <aside
         className={cn(
@@ -541,7 +596,7 @@ export default function ChatPage() {
                     rel="noreferrer"
                     className="flex items-center gap-2.5 rounded-lg p-2 text-xs transition-colors hover:bg-slate-50 dark:hover:bg-neutral-800"
                   >
-                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-blue-500/10 text-[8px] font-black text-blue-500">
+                    <span className="flex h-6 w-6 shrink-0 items-center justify-center rounded bg-blue-500/10 text-[6px] font-black text-blue-500">
                       ZOOM
                     </span>
                     <div className="min-w-0">
@@ -584,7 +639,7 @@ export default function ChatPage() {
               className={cn(
                 'mb-2 flex h-10 w-10 items-center justify-center rounded-xl text-lg',
                 activeSubChannel === 'ai-group-tutor'
-                  ? 'bg-gradient-to-br from-primary to-secondary text-white'
+                  ? 'bg-gradient-to-br from-primary to-accent-blue text-white'
                   : 'bg-slate-100 dark:bg-neutral-800'
               )}
             >
@@ -649,7 +704,7 @@ export default function ChatPage() {
                             className={cn(
                               'text-[13px] leading-none font-black',
                               isLecturer ? 'text-[#003057] dark:text-blue-300' : '',
-                              isAi ? 'bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent' : '',
+                              isAi ? 'bg-gradient-to-r from-primary to-accent-blue bg-clip-text text-transparent' : '',
                               isSelf ? 'text-primary dark:text-secondary' : '',
                               !isLecturer && !isAi && !isSelf ? 'text-slate-900 dark:text-white' : ''
                             )}
@@ -679,9 +734,9 @@ export default function ChatPage() {
                         </div>
 
                         {/* Message text */}
-                        <p className="text-[13px] leading-relaxed whitespace-pre-line text-slate-800 dark:text-neutral-200">
-                          <RenderContent text={msg.content} selfName={selfName} />
-                        </p>
+                        <div className="text-[13px] leading-relaxed text-slate-800 dark:text-neutral-200">
+                          <RenderContent text={msg.content} selfName={selfName} participants={participants} />
+                        </div>
 
                         {/* Attached module */}
                         {msg.attachedModuleCode && (
@@ -717,9 +772,9 @@ export default function ChatPage() {
                     /* Grouped message — no avatar, indent-aligned */
                     <div className="flex items-start gap-3">
                       <div className="w-9 shrink-0" />
-                      <p className="flex-1 text-[13px] leading-relaxed whitespace-pre-line text-slate-800 dark:text-neutral-200">
-                        <RenderContent text={msg.content} selfName={selfName} />
-                      </p>
+                      <div className="flex-1 text-[13px] leading-relaxed text-slate-800 dark:text-neutral-200">
+                        <RenderContent text={msg.content} selfName={selfName} participants={participants} />
+                      </div>
                     </div>
                   )}
                 </div>
@@ -730,7 +785,7 @@ export default function ChatPage() {
             {isAiStreaming && (
               <div className="group relative px-4 py-0.5">
                 <div className="flex items-start gap-3 pt-3">
-                  <div className="flex h-9 w-9 shrink-0 animate-pulse items-center justify-center rounded-xl bg-gradient-to-br from-primary to-secondary text-white">
+                  <div className="flex h-9 w-9 shrink-0 animate-pulse items-center justify-center rounded-xl bg-gradient-to-br from-primary to-accent-blue text-white">
                     <RobotIcon size={16} weight="fill" />
                   </div>
                   <div className="min-w-0 flex-1">
@@ -825,7 +880,7 @@ export default function ChatPage() {
                           className={cn(
                             'flex h-6 w-6 shrink-0 items-center justify-center rounded-md text-[9px] font-black',
                             name === 'AI Tutor'
-                              ? 'bg-gradient-to-br from-primary to-secondary text-white'
+                              ? 'bg-gradient-to-br from-primary to-accent-blue text-white'
                               : 'bg-slate-200 text-slate-600 dark:bg-neutral-700 dark:text-neutral-200'
                           )}
                         >

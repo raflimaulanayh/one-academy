@@ -9,7 +9,8 @@ import {
   UserCircleIcon,
   GearIcon,
   CirclesThreeIcon,
-  ChatCircleDotsIcon
+  ChatCircleDotsIcon,
+  TrophyIcon
 } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
@@ -18,7 +19,7 @@ import { cn } from '@/utils'
 
 import type { UserData } from './types'
 
-type Tab = 'home' | 'lms' | 'assignments' | 'ai' | 'settings' | 'ai-graph' | 'chat'
+type Tab = 'home' | 'lms' | 'assignments' | 'ai' | 'settings' | 'ai-graph' | 'chat' | 'leaderboard'
 
 type Props = {
   userData: UserData
@@ -36,6 +37,7 @@ export function DashboardSidebar({ userData, isSidebarOpen, setIsSidebarOpen: _s
     if (pathname.endsWith('/ai')) return 'ai'
     if (pathname.endsWith('/ai-graph')) return 'ai-graph'
     if (pathname.endsWith('/chat')) return 'chat'
+    if (pathname.endsWith('/leaderboard')) return 'leaderboard'
     if (pathname.endsWith('/settings')) return 'settings'
 
     return 'home'
@@ -50,6 +52,7 @@ export function DashboardSidebar({ userData, isSidebarOpen, setIsSidebarOpen: _s
     { key: 'ai' as const, icon: CpuIcon, label: t('navAI'), href: '/dashboard/ai' },
     { key: 'ai-graph' as const, icon: CirclesThreeIcon, label: t('navAIGraph'), href: '/dashboard/ai-graph' },
     { key: 'chat' as const, icon: ChatCircleDotsIcon, label: t('navChat'), href: '/dashboard/chat' },
+    { key: 'leaderboard' as const, icon: TrophyIcon, label: t('navLeaderboard'), href: '/dashboard/leaderboard' },
     { key: 'settings' as const, icon: GearIcon, label: t('navSettings'), href: '/dashboard/settings' }
   ]
 
