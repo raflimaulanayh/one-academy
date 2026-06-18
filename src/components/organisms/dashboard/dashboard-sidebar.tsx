@@ -8,7 +8,8 @@ import {
   CpuIcon,
   UserCircleIcon,
   GearIcon,
-  CirclesThreeIcon
+  CirclesThreeIcon,
+  ChatCircleDotsIcon
 } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
@@ -17,7 +18,7 @@ import { cn } from '@/utils'
 
 import type { UserData } from './types'
 
-type Tab = 'home' | 'lms' | 'assignments' | 'ai' | 'settings' | 'ai-graph'
+type Tab = 'home' | 'lms' | 'assignments' | 'ai' | 'settings' | 'ai-graph' | 'chat'
 
 type Props = {
   userData: UserData
@@ -34,6 +35,7 @@ export function DashboardSidebar({ userData, isSidebarOpen, setIsSidebarOpen: _s
     if (pathname.endsWith('/assignments')) return 'assignments'
     if (pathname.endsWith('/ai')) return 'ai'
     if (pathname.endsWith('/ai-graph')) return 'ai-graph'
+    if (pathname.endsWith('/chat')) return 'chat'
     if (pathname.endsWith('/settings')) return 'settings'
 
     return 'home'
@@ -47,6 +49,7 @@ export function DashboardSidebar({ userData, isSidebarOpen, setIsSidebarOpen: _s
     { key: 'assignments' as const, icon: FileTextIcon, label: t('navAssignments'), href: '/dashboard/assignments' },
     { key: 'ai' as const, icon: CpuIcon, label: t('navAI'), href: '/dashboard/ai' },
     { key: 'ai-graph' as const, icon: CirclesThreeIcon, label: t('navAIGraph'), href: '/dashboard/ai-graph' },
+    { key: 'chat' as const, icon: ChatCircleDotsIcon, label: t('navChat'), href: '/dashboard/chat' },
     { key: 'settings' as const, icon: GearIcon, label: t('navSettings'), href: '/dashboard/settings' }
   ]
 
@@ -141,7 +144,7 @@ export function DashboardSidebar({ userData, isSidebarOpen, setIsSidebarOpen: _s
       {/* ── Mobile Floating Bottom Dock (md:hidden) ── */}
       <div className="fixed right-4 bottom-4 left-4 z-40 flex h-16 items-center justify-between rounded-2xl border border-slate-200/50 bg-white/80 px-4 py-2 shadow-[0_8px_32px_rgba(0,48,87,0.08)] backdrop-blur-lg md:hidden dark:border-neutral-800/60 dark:bg-neutral-900/85">
         {navItems
-          .filter((item) => ['home', 'lms', 'assignments', 'ai-graph', 'settings'].includes(item.key))
+          .filter((item) => ['home', 'lms', 'assignments', 'chat', 'settings'].includes(item.key))
           .map(({ key, icon: Icon, label, href }) => {
             const isActive = activeTab === key
 
