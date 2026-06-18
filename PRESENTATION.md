@@ -7,21 +7,21 @@
 
 ## TIMELINE PRESENTASI
 
-| Waktu       | Durasi | Bagian                                     |
-| ----------- | ------ | ------------------------------------------ |
-| 00:00–01:30 | 1.5m   | Opening & Konteks Masalah                  |
-| 01:30–03:00 | 1.5m   | Splash Screen & Intro Brand                |
-| 03:00–06:00 | 3m     | Landing Page (Hero → Projects → Pricing)   |
-| 06:00–07:30 | 1.5m   | Chatbot AI & Registrasi                    |
-| 07:30–09:00 | 1.5m   | Login & Dashboard Overview                 |
-| 09:00–11:00 | 2m     | LMS Modular & Materi Pembelajaran          |
-| 11:00–12:30 | 1.5m   | Assignments & Jadwal                       |
-| 12:30–14:00 | 1.5m   | Nilai & Transkrip Akademik                 |
-| 14:00–15:30 | 1.5m   | Leaderboard & SAT Point                    |
-| 15:30–17:00 | 1.5m   | Pembayaran UKT/SPP                         |
-| 17:00–18:30 | 1.5m   | AI Assistant, Knowledge Graph & Chat       |
-| 18:30–19:30 | 1m     | Settings, Dark Mode, Responsive            |
-| 19:30–20:00 | 0.5m   | Penutup & Q&A                              |
+| Waktu       | Durasi | Bagian                                   |
+| ----------- | ------ | ---------------------------------------- |
+| 00:00–01:30 | 1.5m   | Opening & Konteks Masalah                |
+| 01:30–03:00 | 1.5m   | Splash Screen & Intro Brand              |
+| 03:00–06:00 | 3m     | Landing Page (Hero → Projects → Pricing) |
+| 06:00–07:30 | 1.5m   | Chatbot AI & Registrasi                  |
+| 07:30–09:00 | 1.5m   | Login & Dashboard Overview               |
+| 09:00–11:00 | 2m     | LMS Modular & Materi Pembelajaran        |
+| 11:00–12:30 | 1.5m   | Assignments & Jadwal                     |
+| 12:30–14:00 | 1.5m   | Nilai & Transkrip Akademik               |
+| 14:00–15:30 | 1.5m   | Leaderboard & SAT Point                  |
+| 15:30–17:00 | 1.5m   | Pembayaran UKT/SPP                       |
+| 17:00–18:30 | 1.5m   | AI Assistant, Knowledge Graph & Chat     |
+| 18:30–19:30 | 1m     | Settings, Dark Mode, Responsive          |
+| 19:30–20:00 | 0.5m   | Penutup & Q&A                            |
 
 ---
 
@@ -46,6 +46,7 @@
 - Tunggu sampai landing page muncul
 
 **Poin yang perlu disebutkan:**
+
 - Logo animasi brand yang custom
 - Transisi smooth menuju halaman utama
 - Kesan pertama yang profesional
@@ -55,37 +56,46 @@
 ## 3. LANDING PAGE (3:00 – 6:00)
 
 ### 3a. Hero Section
+
 - "Ini halaman utama kita — Hero Section. Ada headline utama yang menjelaskan platform, CTA button untuk mulai, dan visual yang eye-catching."
 - Tunjukin animasi scroll yang smooth
 - "Desainnya pakai glassmorphism dan gradient yang konsisten dengan branding"
 - Tunjukin juga **Navbar** di atas: ada logo, navigasi, **bilingual popover** (switch ID/EN), dan **dark/light mode toggle**
 
 ### 3b. About Section
+
 - Scroll pelan ke bawah
 - "Di sini kita jelasin tentang One Academy, fitur utamanya, kenapa platform ini beda dari yang lain"
 
 ### 3c. Pricing Section
+
 - "Kita juga punya tiers pricing — untuk level SD, SMP, SMA, dan Universitas, masing-masing punya fitur yang disesuaikan"
 - Tunjukin card pricing yang interaktif
 - "Dari sini calon siswa bisa langsung klik daftar dan otomatis ter-direct ke halaman registrasi dengan jenjang yang sudah terpilih"
 
 ### 3d. Events Section
+
 - "Ini section kegiatan/acara — menampilkan event-event yang tersedia di platform"
 
 ### 3e. Projects Section
+
 - "Showcase proyek-proyek mahasiswa/siswa, ini penting banget buat portofolio mereka"
 - Tunjukin card-card proyek dengan hover effect
 
 ### 3f. FAQ Section
+
 - "FAQ section untuk menjawab pertanyaan umum, accordion-style supaya rapi"
 
 ### 3g. CTA Section
+
 - "Dan ditutup dengan Call-to-Action untuk pendaftaran"
 
 ### 3h. Footer
+
 - "Footer berisi informasi kontak, link penting, dan social media"
 
 **Tips presentasi:**
+
 - Scroll pelan-pelan, jangan buru-buru
 - Pause sebentar di setiap section biar audiens bisa lihat
 - Tunjukin hover effects di beberapa elemen
@@ -95,6 +105,7 @@
 ## 4. CHATBOT AI & REGISTRASI (6:00 – 7:30)
 
 ### 4a. AI Chatbot
+
 - "Satu fitur menarik di landing page ini adalah **AI Chatbot**"
 - Klik icon chat di pojok bawah
 - "Ini chatbot yang powered by **Google Gemini AI** lewat Vercel AI SDK"
@@ -102,11 +113,13 @@
 - "Jadi calon siswa bisa tanya-tanya dulu sebelum daftar, tanpa harus kontak admin manual"
 
 **Poin penting:**
+
 - Real-time AI response
 - Konteks chatbot sudah di-set untuk menjawab tentang One Academy
 - Bisa digunakan pengunjung tanpa login
 
 ### 4b. Registrasi Siswa
+
 - Klik CTA "Daftar Sekarang" dari landing page atau navigasi ke `/register`
 - "Halaman registrasi ini desainnya split-screen: sebelah kiri branding, sebelah kanan form"
 - Tunjukin form-nya: **Nama, Email, Password, Pilihan Jenjang** (SD/SMP/SMA/Universitas)
@@ -119,11 +132,13 @@
 ## 5. LOGIN & DASHBOARD OVERVIEW (7:30 – 9:00)
 
 **Navigasi ke halaman login:**
+
 - "Sekarang kita masuk ke sisi student portal"
 - Login dengan akun demo
 - "Setelah login, kita langsung masuk ke **Dashboard** utama"
 
 **Tunjukin Header terlebih dahulu:**
+
 - Logo One Academy + label "Learning Management System"
 - **Bell Icon (Notifikasi)** — klik untuk buka dropdown notifikasi akademik
   - "Ada 3 notifikasi mock: tugas baru, pengumuman mentoring, presensi otomatis"
@@ -134,6 +149,7 @@
   - Tombol **Keluar Sesi**
 
 **Tunjukin Dashboard Home:**
+
 - "Ini dashboard utamanya. Di sini langsung terlihat beberapa informasi penting:"
   - **3 Stat Cards** di atas: Kehadiran (x/14 sesi), Tugas (submitted/total), IPK/Nilai Rata-rata
   - **Privacy Toggle (Eye icon)** di stat IPK — klik untuk blur/show nilai
@@ -142,6 +158,7 @@
     - "Ini fitur demo — semua data berubah sesuai jenjang yang dipilih"
 
 **Tunjukin komponen desktop:**
+
 - **Progress Card** — grafik progres modul per semester
 - **Info Card** — informasi akademik
 - **Upcoming Class Card** — kelas mendatang + aksi presensi
@@ -149,12 +166,14 @@
 - **Forum Card** — shortcut diskusi
 
 **Tunjukin Sidebar:**
+
 - "Sidebar kita didesain dengan warna **Navy Blue** (#003057) supaya terasa premium"
 - "Ada 10 menu: Beranda, LMS, Tugas, Jadwal, Nilai, AI Asisten, AI Graph, Chat, Leaderboard, dan Settings"
 - Klik **toggle sidebar** (DotsNine icon) untuk collapse/expand
 - "Di mobile nanti sidebar ini berubah jadi **floating bottom dock** dengan 5 menu utama"
 
 **BONUS — Tunjukin Sistem Presensi QR Code:**
+
 - "Ini fitur yang cukup canggih — sistem presensi berbasis QR Code"
 - Klik "Simulasi Mode Proyektor" di Upcoming Class card
 - **Modal Proyektor** muncul:
@@ -185,12 +204,14 @@
   - Universitas: Front-End Web, Data Management, OOP, dll
 
 **Poin yang perlu di-highlight:**
+
 - Setiap modul punya **progress bar** yang menunjukkan seberapa jauh siswa sudah belajar
 - Ada **video materi**, **dokumen PDF**, dan **quiz interaktif** di dalam setiap modul
 - Sistem **lock/unlock** — modul selanjutnya baru terbuka setelah modul sebelumnya selesai
 - "Jadi learning path-nya terstruktur, bukan asal belajar random"
 
 **Klik salah satu modul untuk buka detail:**
+
 - Tunjukin isi modul: video, reading material, quiz
 - "Semuanya responsive — bisa diakses dari laptop maupun HP"
 
@@ -199,6 +220,7 @@
 ## 7. ASSIGNMENTS & JADWAL (11:00 – 12:30)
 
 ### 7a. Assignments (Tugas)
+
 **Klik menu "Tugas"**
 
 - "Halaman tugas menampilkan semua assignment yang diberikan dosen/guru"
@@ -208,6 +230,7 @@
 - Klik salah satu tugas untuk buka detail
 
 ### 7b. Schedule (Jadwal)
+
 **Klik menu "Jadwal"**
 
 - "Ini jadwal kelas dan kegiatan akademik"
@@ -266,6 +289,7 @@
 - "Jadi siswa bisa mengumpulkan poin dari keaktifan — ikut seminar, workshop, volunteer, dll"
 
 **Tunjukin:**
+
 - **Leaderboard ranking** — siapa yang paling aktif di kelas dan di sekolah/kampus
 - "Ada dua tab: leaderboard per kelas dan per sekolah/kampus"
 - **SAT Point Claim Form:**
@@ -284,6 +308,7 @@
 - "Ini fitur yang sengaja kita hidden — tidak ada di sidebar utama, tapi bisa diakses dari alert banner di dashboard atau dari profile menu"
 
 **Tunjukin:**
+
 - **Invoice/billing card** — total tagihan, jatuh tempo, status pembayaran
 - "Nominal otomatis menyesuaikan tier: Universitas Rp8.500.000, SD/SMP/SMA lebih murah"
 - **Metode pembayaran** — Virtual Account, Transfer Bank, QRIS
@@ -299,6 +324,7 @@
 ## 11. AI ASSISTANT, KNOWLEDGE GRAPH & CHAT (17:00 – 18:30)
 
 ### 11a. AI Assistant
+
 **Klik menu "AI Asisten"**
 
 - "One Academy punya AI Assistant yang bisa bantu siswa belajar"
@@ -307,6 +333,7 @@
 - "Responnya real-time dan kontekstual"
 
 ### 11b. AI Knowledge Graph
+
 **Klik menu "AI Graph"**
 
 - "Ini fitur yang cukup unik — **Knowledge Graph** berbasis AI"
@@ -314,6 +341,7 @@
 - "Siswa bisa lihat bagaimana satu materi berkaitan dengan materi lain"
 
 ### 11c. Chat / Forum
+
 **Klik menu "Chat"**
 
 - "Ada juga fitur chat/forum untuk diskusi antar siswa"
@@ -324,6 +352,7 @@
 ## 12. SETTINGS, DARK MODE & RESPONSIVE (18:30 – 19:30)
 
 ### 12a. Settings
+
 **Klik menu "Settings"**
 
 - "Halaman settings dibagi jadi 3 section:"
@@ -343,12 +372,14 @@
    - Demo klik satu toggle untuk tunjukin toast-nya
 
 ### 12b. Dark Mode
+
 - Toggle dark mode dari settings
 - "Full support dark mode — semua halaman sudah di-optimize"
 - "Sidebar navy blue, cards, tabel, modal, chart — semuanya konsisten di dark mode"
 - Tunjukin beberapa halaman di dark mode: Dashboard, Grades, LMS
 
 ### 12c. Responsive Demo
+
 - **Resize browser ke ukuran mobile** (atau buka DevTools responsive)
 - "Sekarang kita lihat tampilan mobile-nya"
 - "Sidebar berubah jadi **floating bottom dock** — 5 menu utama yang paling sering dipakai"
@@ -364,6 +395,7 @@
 - "Semua pixel-perfect dan enak dipakai di layar kecil"
 
 ### 12d. Multi-bahasa
+
 - "Oh iya, One Academy juga support **2 bahasa**: Indonesia dan English"
 - "Semua teks UI otomatis berubah sesuai locale — pakai `next-intl`"
 - Tunjukin switch bahasa dari Settings (segmented ID/EN)
@@ -405,11 +437,11 @@
 
 ## PERTANYAAN YANG MUNGKIN DITANYA
 
-| Pertanyaan | Jawaban Singkat |
-| --- | --- |
-| "Kenapa pakai Next.js, bukan Laravel?" | "Next.js 16 support SSR, React Server Components, dan ecosystem JavaScript yang sangat luas. Cocok untuk SPA yang butuh SEO dan performa tinggi." |
-| "Database-nya apa?" | "Pakai Supabase (PostgreSQL) dengan Drizzle ORM untuk type-safe queries." |
-| "Bisa deploy ke production?" | "Bisa. Support Vercel, Railway, atau self-hosted. Sudah PWA-ready juga." |
-| "AI-nya pakai apa?" | "Google Gemini via Vercel AI SDK. Support streaming response." |
-| "Bedanya sama Google Classroom?" | "One Academy lebih modular, support multi-jenjang, ada fitur pembayaran, leaderboard SAT, dan AI assistant bawaan." |
-| "Kenapa fitur payment tidak di sidebar?" | "Design decision — payment bukan fitur yang diakses setiap hari, jadi di-akses via alert banner atau profile menu supaya sidebar tetap clean." |
+| Pertanyaan                               | Jawaban Singkat                                                                                                                                   |
+| ---------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- |
+| "Kenapa pakai Next.js, bukan Laravel?"   | "Next.js 16 support SSR, React Server Components, dan ecosystem JavaScript yang sangat luas. Cocok untuk SPA yang butuh SEO dan performa tinggi." |
+| "Database-nya apa?"                      | "Pakai Supabase (PostgreSQL) dengan Drizzle ORM untuk type-safe queries."                                                                         |
+| "Bisa deploy ke production?"             | "Bisa. Support Vercel, Railway, atau self-hosted. Sudah PWA-ready juga."                                                                          |
+| "AI-nya pakai apa?"                      | "Google Gemini via Vercel AI SDK. Support streaming response."                                                                                    |
+| "Bedanya sama Google Classroom?"         | "One Academy lebih modular, support multi-jenjang, ada fitur pembayaran, leaderboard SAT, dan AI assistant bawaan."                               |
+| "Kenapa fitur payment tidak di sidebar?" | "Design decision — payment bukan fitur yang diakses setiap hari, jadi di-akses via alert banner atau profile menu supaya sidebar tetap clean."    |
