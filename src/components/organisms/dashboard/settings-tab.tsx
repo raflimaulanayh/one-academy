@@ -200,7 +200,7 @@ export function SettingsTab({ userData }: Props) {
                   <div className="relative h-3 w-4.5 overflow-hidden rounded shadow-sm">
                     <Image src="/static/icons/flag/id.svg" alt="ID flag" fill className="object-cover" />
                   </div>
-                  Indo
+                  ID
                 </button>
                 <button
                   disabled={isPending}
@@ -215,7 +215,7 @@ export function SettingsTab({ userData }: Props) {
                   <div className="relative h-3 w-4.5 overflow-hidden rounded shadow-sm">
                     <Image src="/static/icons/flag/en.svg" alt="EN flag" fill className="object-cover" />
                   </div>
-                  Eng
+                  EN
                 </button>
               </div>
             </div>
