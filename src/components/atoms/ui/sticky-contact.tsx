@@ -1,5 +1,6 @@
 'use client'
 
+import { WHATSAPP_LINK } from '@/constants/general-data'
 import { Link } from '@/i18n/routing'
 import { HeadsetIcon } from '@phosphor-icons/react'
 import { useLocale } from 'next-intl'
@@ -38,7 +39,8 @@ export const StickyContact = () => {
     <Link
       tabIndex={0}
       aria-label={locale === 'en' ? 'Contact us via AI Chatbot' : 'Hubungi kami melalui AI Chatbot'}
-      href="/chatbot"
+      href={WHATSAPP_LINK}
+      target="_blank"
       className={cn(
         show ? 'right-4 lg:right-9' : '-right-full',
         'gtm-contact-wa fixed bottom-4 z-40 flex items-center gap-2 transition-all duration-700 lg:bottom-7'
