@@ -20,7 +20,7 @@ import { cn } from '@/utils'
 
 import type { UserData } from './types'
 
-type Tab = 'home' | 'lms' | 'assignments' | 'ai' | 'settings' | 'ai-graph' | 'chat' | 'leaderboard' | 'schedule'
+type Tab = 'home' | 'lms' | 'assignments' | 'ai' | 'settings' | 'ai-graph' | 'chat' | 'leaderboard' | 'schedule' | 'payment'
 
 type Props = {
   userData: UserData
@@ -36,6 +36,7 @@ export function DashboardSidebar({ userData, isSidebarOpen, setIsSidebarOpen: _s
     if (pathname.endsWith('/lms')) return 'lms'
     if (pathname.endsWith('/assignments')) return 'assignments'
     if (pathname.endsWith('/schedule')) return 'schedule'
+    if (pathname.endsWith('/payment')) return 'payment'
     if (pathname.endsWith('/ai')) return 'ai'
     if (pathname.endsWith('/ai-graph')) return 'ai-graph'
     if (pathname.endsWith('/chat')) return 'chat'

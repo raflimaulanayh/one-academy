@@ -1,10 +1,10 @@
 'use client'
 
-import { BellIcon, FileArrowUpIcon, MegaphoneIcon, SignOutIcon, DotsNineIcon } from '@phosphor-icons/react'
+import { Link } from '@/i18n/routing'
+import { BellIcon, FileArrowUpIcon, MegaphoneIcon, SignOutIcon, DotsNineIcon, CreditCardIcon } from '@phosphor-icons/react'
 import { motion, AnimatePresence } from 'framer-motion'
 import { signOut } from 'next-auth/react'
 import Image from 'next/image'
-import Link from 'next/link'
 import { RefObject } from 'react'
 import { toast } from 'sonner'
 
@@ -163,6 +163,14 @@ export function DashboardHeader({
                       {tierLabel}
                     </span>
                   </div>
+                  <Link
+                    href="/dashboard/payment"
+                    className="mb-1 flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-xs font-bold text-slate-700 transition-colors hover:bg-neutral-100 dark:text-neutral-300 dark:hover:bg-neutral-800"
+                    onClick={() => setIsProfileOpen(false)}
+                  >
+                    <CreditCardIcon size={16} />
+                    {userData.tier === 'univ' ? 'Pembayaran UKT' : 'Pembayaran SPP'}
+                  </Link>
                   <button
                     onClick={handleLogout}
                     className="flex w-full items-center gap-2 rounded-lg px-3 py-2 text-left text-xs font-bold text-red-600 transition-colors hover:bg-neutral-100 dark:hover:bg-neutral-800"
