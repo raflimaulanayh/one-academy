@@ -29,7 +29,7 @@ interface PaymentHistoryItem {
 
 export default function PaymentPage() {
   const t = useTranslations('Dashboard')
-  const { userData, currentLang } = useDashboard()
+  const { userData, currentLang, isPaid, setIsPaid } = useDashboard()
 
   const isIndo = currentLang === 'id'
   const isUniv = userData?.tier === 'univ'
@@ -107,7 +107,6 @@ export default function PaymentPage() {
       ]
 
   // Page states (All hooks are initialized at the very top)
-  const [isPaid, setIsPaid] = useState(false)
   const [history, setHistory] = useState<PaymentHistoryItem[]>(initialHistory)
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [modalStep, setModalStep] = useState<1 | 2 | 3>(1)

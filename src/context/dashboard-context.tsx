@@ -600,6 +600,8 @@ type DashboardContextType = {
   tierLabels: Record<string, string>
   showGrades: boolean
   toggleGradesVisibility: () => void
+  isPaid: boolean
+  setIsPaid: (val: boolean) => void
   activeQRToken: string
   qrCountdown: number
   deviceBindingID: string
@@ -619,6 +621,7 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
   const [attendanceCount, setAttendanceCount] = useState(12)
   const [hasAttendedToday, setHasAttendedToday] = useState(false)
   const [showGrades, setShowGrades] = useState(true)
+  const [isPaid, setIsPaidState] = useState(false)
   const [assignmentsState, setAssignmentsState] = useState<
     Record<number, { status: 'pending' | 'submitted'; score?: number }>
   >({
@@ -635,6 +638,11 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
   const setCurrentClientDeviceID = (id: string) => {
     setCurrentClientDeviceIDState(id)
     localStorage.setItem('mock_client_device_id', id)
+  }
+
+  const setIsPaid = (val: boolean) => {
+    setIsPaidState(val)
+    localStorage.setItem('mock_tuition_paid', String(val))
   }
 
   // Load cookies and localStorage states on mount
@@ -675,6 +683,11 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
     const savedVisibility = localStorage.getItem('mock_show_grades')
     if (savedVisibility !== null) {
       setShowGrades(savedVisibility === 'true')
+    }
+
+    const savedPaid = localStorage.getItem('mock_tuition_paid')
+    if (savedPaid !== null) {
+      setIsPaidState(savedPaid === 'true')
     }
   }, [])
 
@@ -837,6 +850,8 @@ export function DashboardProvider({ children }: { children: ReactNode }) {
         tierLabels,
         showGrades,
         toggleGradesVisibility,
+        isPaid,
+        setIsPaid,
         activeQRToken,
         qrCountdown,
         deviceBindingID,

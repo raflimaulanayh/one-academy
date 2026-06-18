@@ -22,6 +22,7 @@ import {
   WifiHighIcon,
   WarningIcon
 } from '@phosphor-icons/react'
+import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
 import { QRCodeSVG } from 'qrcode.react'
 import { useState, useEffect, useRef } from 'react'
@@ -56,7 +57,8 @@ export default function DashboardPage() {
     currentLang,
     assignments,
     showGrades,
-    toggleGradesVisibility
+    toggleGradesVisibility,
+    isPaid
   } = useDashboard()
 
   // Progress filters local state
@@ -147,6 +149,39 @@ export default function DashboardPage() {
           )}
         </div>
       </div>
+
+      {/* ─── Urgent Tuition Alert Banner ─── */}
+      {!isPaid && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="flex flex-col gap-4 rounded-2xl border border-red-200/60 bg-red-500/5 p-4 text-xs text-red-950 shadow-xs sm:flex-row sm:items-center sm:justify-between dark:border-red-900/30 dark:bg-red-950/10 dark:text-red-200"
+        >
+          <div className="flex items-start gap-3.5 sm:items-center">
+            <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-red-100 text-red-600 dark:bg-red-900/30 dark:text-red-400">
+              <WarningIcon size={18} weight="bold" />
+            </div>
+            <div>
+              <p className="text-[13px] font-extrabold tracking-tight text-red-900 dark:text-red-300">
+                {currentLang === 'id'
+                  ? 'Tagihan Biaya Pendidikan Aktif Belum Terbayar!'
+                  : 'Outstanding Tuition Bill Unpaid!'}
+              </p>
+              <p className="mt-0.5 font-medium text-slate-600 dark:text-neutral-400">
+                {currentLang === 'id'
+                  ? `Tagihan ${userData.tier === 'univ' ? 'UKT Semester Ganjil 2026/2027' : 'SPP bulan Juli 2026'} sebesar ${userData.tier === 'univ' ? 'Rp8.500.000' : 'Rp550.000'} jatuh tempo pada 30 Juni 2026.`
+                  : `${userData.tier === 'univ' ? 'UKT Tuition for Odd Semester 2026/2027' : 'SPP Tuition for July 2026'} of ${userData.tier === 'univ' ? 'Rp8,500,000' : 'Rp550,000'} is due on June 30, 2026.`}
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/dashboard/payment"
+            className="inline-flex shrink-0 items-center justify-center gap-1 self-start rounded-xl bg-red-600 px-4 py-2.5 font-black text-white shadow-xs transition-all hover:scale-[0.99] hover:bg-red-700 active:scale-95 sm:self-auto dark:bg-red-800 dark:hover:bg-red-700"
+          >
+            <span>{currentLang === 'id' ? 'Bayar Sekarang' : 'Pay Now'}</span>
+          </Link>
+        </motion.div>
+      )}
 
       {/* ─── Academic Stats Grid ─── */}
       <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">

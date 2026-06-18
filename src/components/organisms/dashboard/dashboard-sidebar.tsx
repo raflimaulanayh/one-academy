@@ -79,31 +79,33 @@ export function DashboardSidebar({ userData, isSidebarOpen, setIsSidebarOpen: _s
       {/* ── Desktop Sidebar (md:flex) ── */}
       <aside
         className={cn(
-          'hidden shrink-0 flex-col border-r border-slate-200 bg-white transition-all duration-300 ease-in-out md:flex dark:border-[#2e2e2e] dark:bg-[#1e1e1e]',
+          'hidden shrink-0 flex-col border-r border-[#002849] bg-[#003057] transition-all duration-300 ease-in-out md:flex dark:border-[#2e2e2e] dark:bg-[#121212]',
           isSidebarOpen ? 'w-66' : 'w-20'
         )}
       >
         <div className="flex flex-1 flex-col overflow-hidden p-4">
           {/* User Account / Role Badge */}
           {isSidebarOpen ? (
-            <div className="mb-6 rounded-2xl border border-slate-100 bg-[#fafafa] p-4 shadow-sm dark:border-neutral-800/40 dark:bg-[#151515]">
+            <div className="mb-6 rounded-2xl border border-white/10 bg-white/10 p-4 shadow-inner dark:border-neutral-800/40 dark:bg-[#151515]">
               <div className="mb-2 flex items-center justify-between">
-                <div className="flex items-center gap-1.5 text-xs font-extrabold text-primary dark:text-secondary">
+                <div className="flex items-center gap-1.5 text-xs font-extrabold text-blue-300 dark:text-secondary">
                   <UserCircleIcon size={16} weight="bold" />
-                  <span className="tracking-wide uppercase">{t('role')}</span>
+                  <span className="tracking-wide text-blue-200 uppercase">{t('role')}</span>
                 </div>
-                <span className="rounded-full bg-green-500/10 px-2 py-0.5 text-[8px] font-black tracking-wider text-green-500 uppercase">
+                <span className="rounded-full bg-green-500/20 px-2 py-0.5 text-[8px] font-black tracking-wider text-green-400 uppercase">
                   {t('active')}
                 </span>
               </div>
-              <p className="text-sm font-black text-[#333] dark:text-white">{t('student')}</p>
-              <p className="mt-0.5 truncate text-[10px] font-medium text-text-muted">{userData.school || 'One Academy'}</p>
+              <p className="text-sm font-black text-white">{t('student')}</p>
+              <p className="mt-0.5 truncate text-[10px] font-semibold text-slate-300/80 dark:text-text-muted">
+                {userData.school || 'One Academy'}
+              </p>
             </div>
           ) : (
             <div className="mb-6 flex flex-col items-center justify-center">
               <div
                 title={`${t('student')} - ${userData.school || 'One Academy'}`}
-                className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-xs font-black text-primary shadow-sm dark:bg-secondary/10 dark:text-secondary"
+                className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/10 text-xs font-black text-white shadow-xs dark:bg-secondary/10 dark:text-secondary"
               >
                 {userData.name.substring(0, 2).toUpperCase()}
               </div>
@@ -124,15 +126,15 @@ export function DashboardSidebar({ userData, isSidebarOpen, setIsSidebarOpen: _s
                     'group relative flex items-center overflow-hidden rounded-xl py-3 text-xs font-bold transition-all focus:outline-none',
                     isSidebarOpen ? 'w-full gap-3.5 px-4' : 'mx-auto h-12 w-12 justify-center',
                     isActive
-                      ? 'text-white shadow-[0_4px_16px_rgba(0,138,227,0.15)] dark:shadow-none'
-                      : 'text-text-muted hover:text-[#333] dark:hover:text-white'
+                      ? 'text-white'
+                      : 'text-slate-300 hover:bg-white/5 hover:text-white dark:text-text-muted dark:hover:text-white'
                   )}
                 >
                   {/* Sliding active background marker */}
                   {isActive && (
                     <motion.div
                       layoutId="activeTabSidebar"
-                      className="absolute inset-0 z-0 rounded-xl bg-gradient-to-r from-navy-medium to-primary dark:from-navy-active dark:to-primary"
+                      className="absolute inset-0 z-0 rounded-xl bg-white/10 dark:from-[#2a2a2a] dark:to-[#1a1a1a]"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -144,7 +146,9 @@ export function DashboardSidebar({ userData, isSidebarOpen, setIsSidebarOpen: _s
                       weight={isActive ? 'bold' : 'regular'}
                       className={cn(
                         'transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3',
-                        isActive ? 'text-white' : 'text-text-muted group-hover:text-primary dark:group-hover:text-secondary'
+                        isActive
+                          ? 'text-white'
+                          : 'text-slate-300 group-hover:text-white dark:text-text-muted dark:group-hover:text-secondary'
                       )}
                     />
                   </span>
@@ -157,7 +161,7 @@ export function DashboardSidebar({ userData, isSidebarOpen, setIsSidebarOpen: _s
         </div>
 
         {/* Sidebar Footer */}
-        <div className="shrink-0 border-t border-slate-100 p-4 text-center text-[10px] font-semibold text-text-muted dark:border-neutral-800/40">
+        <div className="shrink-0 border-t border-[#002849] p-4 text-center text-[10px] font-semibold text-blue-200/50 dark:border-neutral-800/40 dark:text-text-muted">
           {isSidebarOpen ? `\u00A9 ${new Date().getFullYear()} One Academy` : 'OA'}
         </div>
       </aside>
