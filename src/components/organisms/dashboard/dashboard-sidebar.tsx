@@ -10,7 +10,8 @@ import {
   GearIcon,
   CirclesThreeIcon,
   ChatCircleDotsIcon,
-  TrophyIcon
+  TrophyIcon,
+  CalendarBlankIcon
 } from '@phosphor-icons/react'
 import { motion } from 'framer-motion'
 import { useTranslations } from 'next-intl'
@@ -19,7 +20,7 @@ import { cn } from '@/utils'
 
 import type { UserData } from './types'
 
-type Tab = 'home' | 'lms' | 'assignments' | 'ai' | 'settings' | 'ai-graph' | 'chat' | 'leaderboard'
+type Tab = 'home' | 'lms' | 'assignments' | 'ai' | 'settings' | 'ai-graph' | 'chat' | 'leaderboard' | 'schedule'
 
 type Props = {
   userData: UserData
@@ -34,6 +35,7 @@ export function DashboardSidebar({ userData, isSidebarOpen, setIsSidebarOpen: _s
   const getActiveTab = (): Tab => {
     if (pathname.endsWith('/lms')) return 'lms'
     if (pathname.endsWith('/assignments')) return 'assignments'
+    if (pathname.endsWith('/schedule')) return 'schedule'
     if (pathname.endsWith('/ai')) return 'ai'
     if (pathname.endsWith('/ai-graph')) return 'ai-graph'
     if (pathname.endsWith('/chat')) return 'chat'
@@ -49,6 +51,7 @@ export function DashboardSidebar({ userData, isSidebarOpen, setIsSidebarOpen: _s
     { key: 'home' as const, icon: HouseIcon, label: t('navHome'), href: '/dashboard' },
     { key: 'lms' as const, icon: BookOpenIcon, label: t('navLms'), href: '/dashboard/lms' },
     { key: 'assignments' as const, icon: FileTextIcon, label: t('navAssignments'), href: '/dashboard/assignments' },
+    { key: 'schedule' as const, icon: CalendarBlankIcon, label: t('navSchedule'), href: '/dashboard/schedule' },
     { key: 'ai' as const, icon: CpuIcon, label: t('navAI'), href: '/dashboard/ai' },
     { key: 'ai-graph' as const, icon: CirclesThreeIcon, label: t('navAIGraph'), href: '/dashboard/ai-graph' },
     { key: 'chat' as const, icon: ChatCircleDotsIcon, label: t('navChat'), href: '/dashboard/chat' },
