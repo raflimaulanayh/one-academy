@@ -107,14 +107,7 @@ export const PricingSection = () => {
 
               {/* Action */}
               <div className="mt-8">
-                <Button
-                  asChild
-                  className={`w-full font-semibold ${
-                    tier.popular
-                      ? 'bg-secondary text-primary hover:bg-amber-500'
-                      : 'bg-primary text-white hover:bg-navy-active dark:bg-white/10 dark:text-white dark:hover:bg-white/20'
-                  }`}
-                >
+                <Button asChild className="w-full">
                   <Link href={`/register?tier=${tier.id}`}>{t('cta')}</Link>
                 </Button>
               </div>
