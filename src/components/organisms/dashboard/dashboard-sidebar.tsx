@@ -79,7 +79,7 @@ export function DashboardSidebar({ userData, isSidebarOpen, setIsSidebarOpen: _s
       {/* ── Desktop Sidebar (md:flex) ── */}
       <aside
         className={cn(
-          'hidden shrink-0 flex-col border-r border-[#002849] bg-[#003057] transition-all duration-300 ease-in-out md:flex dark:border-[#2e2e2e] dark:bg-[#121212]',
+          'hidden shrink-0 flex-col border-r border-black/15 bg-navy-dark transition-all duration-300 ease-in-out md:flex dark:border-[#2e2e2e] dark:bg-[#121212]',
           isSidebarOpen ? 'w-66' : 'w-20'
         )}
       >
@@ -88,9 +88,9 @@ export function DashboardSidebar({ userData, isSidebarOpen, setIsSidebarOpen: _s
           {isSidebarOpen ? (
             <div className="mb-6 rounded-2xl border border-white/10 bg-white/10 p-4 shadow-inner dark:border-neutral-800/40 dark:bg-[#151515]">
               <div className="mb-2 flex items-center justify-between">
-                <div className="flex items-center gap-1.5 text-xs font-extrabold text-blue-300 dark:text-secondary">
+                <div className="flex items-center gap-1.5 text-xs font-extrabold text-white/80 dark:text-secondary">
                   <UserCircleIcon size={16} weight="bold" />
-                  <span className="tracking-wide text-blue-200 uppercase">{t('role')}</span>
+                  <span className="tracking-wide text-white/60 uppercase">{t('role')}</span>
                 </div>
                 <span className="rounded-full bg-green-500/20 px-2 py-0.5 text-[8px] font-black tracking-wider text-green-400 uppercase">
                   {t('active')}
@@ -161,7 +161,7 @@ export function DashboardSidebar({ userData, isSidebarOpen, setIsSidebarOpen: _s
         </div>
 
         {/* Sidebar Footer */}
-        <div className="shrink-0 border-t border-[#002849] p-4 text-center text-[10px] font-semibold text-blue-200/50 dark:border-neutral-800/40 dark:text-text-muted">
+        <div className="shrink-0 border-t border-black/15 p-4 text-center text-[10px] font-semibold text-white/40 dark:border-neutral-800/40 dark:text-text-muted">
           {isSidebarOpen ? `\u00A9 ${new Date().getFullYear()} One Academy` : 'OA'}
         </div>
       </aside>

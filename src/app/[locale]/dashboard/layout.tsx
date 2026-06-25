@@ -57,17 +57,17 @@ function DashboardLayoutContent({ children }: { children: ReactNode }) {
       light: {
         primary: '#d92727',
         secondary: '#ef4444',
-        navyDark: '#450a0a',
-        navyMedium: '#7f1d1d',
-        navyActive: '#991b1b',
+        navyDark: '#7f1d1d',
+        navyMedium: '#991b1b',
+        navyActive: '#b91c1c',
         ring: '#d92727'
       },
       dark: {
         primary: '#f87171',
         secondary: '#fca5a5',
-        navyDark: '#180404',
-        navyMedium: '#450a0a',
-        navyActive: '#7f1d1d',
+        navyDark: '#450a0a',
+        navyMedium: '#7f1d1d',
+        navyActive: '#991b1b',
         ring: '#f87171'
       }
     },
@@ -111,7 +111,7 @@ function DashboardLayoutContent({ children }: { children: ReactNode }) {
       light: {
         primary: '#0f2854',
         secondary: '#ff9d00',
-        navyDark: '#071731',
+        navyDark: '#003057',
         navyMedium: '#0f2854',
         navyActive: '#1e3a8a',
         ring: '#0f2854'
